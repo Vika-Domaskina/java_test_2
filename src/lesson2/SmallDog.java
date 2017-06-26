@@ -36,6 +36,12 @@ public class SmallDog extends Dog {
         System.out.println(teeth);
     }
 
+    void voice() {
+        for (int i = 0; i < age; i++) {
+            System.out.println("Gav-rr!");
+        }
+    }
+
     @Override
     public String toString() {
         return "I'm a small dog " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender + '\n' + "I have " + hair + " hair";

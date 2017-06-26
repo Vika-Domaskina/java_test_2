@@ -23,8 +23,8 @@ public class SoutMembers {
             System.out.print(exem2.colorsEyes[i]);
         }*/
 
-       /* Dog dog1 = new Dog(0.3, "Chak", "m", "Staf");
-        System.out.println("\n" + "\n");
+        Dog dog1 = new Dog(4, "Chak", "m", "Staf");
+        /*System.out.println("\n" + "\n");
         System.out.println(dog1);
         dog1.voice();
         System.out.println("\n" + "\n");
@@ -57,8 +57,8 @@ public class SoutMembers {
         System.out.println("\n" + "\n");
         System.out.println(dog4);*/
 
-        /*Animals anim1 = new Animals(1, "Din","m");
-        Animals anim2 = new Animals (anim1);
+        Animals anim1 = new Animals(7, "Din", "m");
+        /*Animals anim2 = new Animals (anim1);
         System.out.println("\n" + "\n");
         System.out.println(anim1);
         System.out.println("\n" + "\n");
@@ -75,15 +75,23 @@ public class SoutMembers {
         dog1.show();
         System.out.println("My feets : " + dog1.getFeet(5));*/
 
-        SmallDog dog1 = new SmallDog(2.1, "Buba", "f", "picines", "green");
-        SmallDog dog2 = new SmallDog(dog1);
+        SmallDog sdog1 = new SmallDog(2.1, "Buba", "f", "picines", "green");
+        /*SmallDog dog2 = new SmallDog(dog1);
         System.out.println(dog1);
         System.out.println();
         System.out.println(dog2);
         dog2.name="Huba";
         System.out.println();
-        System.out.println(dog2);
+        System.out.println(dog2)*/
+        ;
 
+        Cat cat1 = new Cat(3, "Barsik", "m");
+        /*System.out.println(cat1);
+        cat1.voice();*/
+        Animals[] array = {anim1, dog1, sdog1, cat1};
+        for (int i=0; i<array.length; i++){
+            array[i].voice();
+        }
 
     }
 }

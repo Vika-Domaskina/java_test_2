@@ -86,12 +86,21 @@ public class SoutMembers {
         ;
 
         Cat cat1 = new Cat(3, "Barsik", "m");
+        Cat cat2 = new Cat(6, "Barsikos", "m");
         /*System.out.println(cat1);
         cat1.voice();*/
         Animals[] array = {anim1, dog1, sdog1, cat1};
-        for (int i=0; i<array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i].voice();
         }
+        System.out.println(cat1.fight(anim1));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(cat1.fight(sdog1));
+        System.out.println(cat1.fight(cat2));
 
     }
 }

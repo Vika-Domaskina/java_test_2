@@ -5,6 +5,10 @@ package lesson2;
  */
 class Animals {
     static protected long counter;
+    protected int fight_counter;
+    protected double h;
+    protected int weight;
+    protected int tail;
     protected double age = 0;
     protected String name;
     protected String gender = "It";
@@ -24,6 +28,14 @@ class Animals {
         this.age=am.age;
         this.name=am.name;
         //this.gender=am.gender;
+
+    }
+    Animals(String name,double age,double h, int weight, int tail) {
+        this.name=name;
+        this.age=age;
+        this.h=h;
+        this.weight=weight;
+        this.tail=tail;
 
     }
 
@@ -57,7 +69,6 @@ class Animals {
     }
 
     double heightAnimal(double weight) {
-        double h;
         if (this.age < 1) {
             h = this.age * weight;
         } else if (this.gender.equals("f")) {

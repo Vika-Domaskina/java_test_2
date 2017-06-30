@@ -1,10 +1,11 @@
 package lesson2;
-
+import java.util.Random;
 /**
  * Created by Viktoriya.D on 6/14/2017.
  */
 public class SoutMembers {
     public static void main(String[] args) {
+        Random random = new Random();
        /* Animals exem = new Animals(0.2, "Grut", "m");
         Animals exem2 = new Animals(6, "Gera","f");
         Animals exem3 = new Animals(3, "Shashluk","gdrt");
@@ -85,22 +86,25 @@ public class SoutMembers {
         System.out.println(dog2)*/
         ;
 
-        Cat cat1 = new Cat(3, "Barsik", "m");
-        Cat cat2 = new Cat(6, "Barsikos", "m");
+//        Cat cat1 = new Cat("Barsik", random.nextInt(),random.nextInt() , random.nextInt(),random.nextInt());
+//        Cat cat2 = new Cat("Sezario", random.nextInt(),random.nextInt() , random.nextInt(),random.nextInt());
+//        cat1.fight(cat2);
         /*System.out.println(cat1);
         cat1.voice();*/
-        Animals[] array = {anim1, dog1, sdog1, cat1};
-        for (int i = 0; i < array.length; i++) {
-            array[i].voice();
+//        Animals[] array = {anim1, dog1, sdog1, cat1};
+//        for (int i = 0; i < array.length; i++) {
+//            array[i].voice();
+//        }
+        String a ="Танчо, Тошико, Або-Анс, Абен, Або, Абрек, Абур, Агар, Агат, Агит, Аго, Адар, Адис, Адон, Азаделло, Азар, Азарт, Азор, Аир, Айвар, Айгун, Айдан, Атос, Аточ, Атро, Аул, Ахилесс, Ахилл, Ахтай, Ачи, Ашуг, Ашур, Аюр, Аюрчи, Аякс, Аян, Збавка, Задира, Занга, Зара Зея, Зита, Зитта, Зунда, Зута, Зура, Зурна, Забина, Зона, Зарри, Золмо, Запевка, Зарелла, Зита, Затейка, Зерета, Зука, Зимушка, Зирса, Зита, Зурна";
+        String[] names = a.split(",");
+        for ( int i=0; i<names.length;i++){
+            System.out.println(names[i]);
         }
-        System.out.println(cat1.fight(anim1));
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(cat1.fight(sdog1));
-        System.out.println(cat1.fight(cat2));
+        System.out.println(names.length);
+
+
+
+
 
     }
 }

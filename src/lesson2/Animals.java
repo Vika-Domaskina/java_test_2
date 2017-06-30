@@ -5,7 +5,7 @@ package lesson2;
  */
 class Animals {
     static protected long counter;
-    protected int fight_counter;
+    protected int fight_counter=10;
     protected double h;
     protected int weight;
     protected int tail;
@@ -88,6 +88,14 @@ class Animals {
 
     protected String[] getColorsEyes() {
         return this.colorsEyes;
+    }
+
+    protected void go_to_Sleep(int sleep){
+        try {
+            Thread.sleep(sleep);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

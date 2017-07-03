@@ -1,15 +1,17 @@
 package lesson2;
+
 import java.util.Random;
+
 /**
  * Created by Viktoriya.D on 6/14/2017.
  */
 public class SoutMembers {
     public static void main(String[] args) {
         Random random = new Random();
-       /* Animals exem = new Animals(0.2, "Grut", "m");
-        Animals exem2 = new Animals(6, "Gera","f");
-        Animals exem3 = new Animals(3, "Shashluk","gdrt");
-        Animals exem4 = new Animals(2, "Lara","kjg");
+       /* Animal exem = new Animal(0.2, "Grut", "m");
+        Animal exem2 = new Animal(6, "Gera","f");
+        Animal exem3 = new Animal(3, "Shashluk","gdrt");
+        Animal exem4 = new Animal(2, "Lara","kjg");
         System.out.println(exem);
         exem.setFeet(2);
         System.out.println("My height : "+ exem.heightAnimal(4));
@@ -29,7 +31,7 @@ public class SoutMembers {
         System.out.println(dog1);
         dog1.voice();
         System.out.println("\n" + "\n");
-        Animals dog2 = new Animals(1, "Beer", "m");
+        Animal dog2 = new Animal(1, "Beer", "m");
         dog2 = dog1;
         System.out.println(dog2);
         dog2.voice();
@@ -38,7 +40,7 @@ public class SoutMembers {
         /*Dog dog3 = new Dog();
         System.out.println("\n" + "\n");
         System.out.println(dog3);
-        Animals dog4 = new Animals(1, "Beer", "m");
+        Animal dog4 = new Animal(1, "Beer", "m");
         System.out.println("\n" + "\n");
         System.out.println(dog4);
         dog4 = dog3;
@@ -58,8 +60,8 @@ public class SoutMembers {
         System.out.println("\n" + "\n");
         System.out.println(dog4);*/
 
-        Animals anim1 = new Animals(7, "Din", "m");
-        /*Animals anim2 = new Animals (anim1);
+        Animal anim1 = new Animal(7, "Din", "m");
+        /*Animal anim2 = new Animal (anim1);
         System.out.println("\n" + "\n");
         System.out.println(anim1);
         System.out.println("\n" + "\n");
@@ -85,26 +87,9 @@ public class SoutMembers {
         System.out.println();
         System.out.println(dog2)*/
         ;
-
-//        Cat cat1 = new Cat("Barsik", random.nextInt(),random.nextInt() , random.nextInt(),random.nextInt());
-//        Cat cat2 = new Cat("Sezario", random.nextInt(),random.nextInt() , random.nextInt(),random.nextInt());
-//        cat1.fight(cat2);
-        /*System.out.println(cat1);
-        cat1.voice();*/
-//        Animals[] array = {anim1, dog1, sdog1, cat1};
+//        Animal[] array = {anim1, dog1, sdog1, cat1};
 //        for (int i = 0; i < array.length; i++) {
 //            array[i].voice();
 //        }
-        String a ="Танчо, Тошико, Або-Анс, Абен, Або, Абрек, Абур, Агар, Агат, Агит, Аго, Адар, Адис, Адон, Азаделло, Азар, Азарт, Азор, Аир, Айвар, Айгун, Айдан, Атос, Аточ, Атро, Аул, Ахилесс, Ахилл, Ахтай, Ачи, Ашуг, Ашур, Аюр, Аюрчи, Аякс, Аян, Збавка, Задира, Занга, Зара Зея, Зита, Зитта, Зунда, Зута, Зура, Зурна, Забина, Зона, Зарри, Золмо, Запевка, Зарелла, Зита, Затейка, Зерета, Зука, Зимушка, Зирса, Зита, Зурна";
-        String[] names = a.split(",");
-        for ( int i=0; i<names.length;i++){
-            System.out.println(names[i]);
-        }
-        System.out.println(names.length);
-
-
-
-
-
     }
 }

@@ -3,7 +3,7 @@ package lesson2;
 /**
  * Created by Viktoriya.D on 6/22/2017.
  */
-public class Dog extends Animals {
+public class Dog extends Animal {
     public String type;
 
     Dog(double age, String name, String gender, String type) {

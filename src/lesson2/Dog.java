@@ -19,6 +19,9 @@ public class Dog extends Animal {
         super.feet=feet;
         this.feet=age;
     }
+    Dog(String name, double age, double h, int weight, int tail) {
+        super(name, age, h, weight, tail);
+    }
 
     Dog() {
         counter++;
@@ -46,6 +49,6 @@ public class Dog extends Animal {
 
     @Override
     public String toString() {
-        return "I'm " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender;
+        return "I'm " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender+ "\nMy height " + h + "\nMy weight " + weight + "\nMy tail " + tail;
     }
 }

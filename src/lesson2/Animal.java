@@ -18,6 +18,7 @@ class Animal {
     protected String colorsEyes[] = {"", ""};
     public static ArrayList<Animal> louser = new ArrayList<>();
 
+
     Animal(double age, String name, String gender) {
         counter++;
         this.age = age;
@@ -109,14 +110,14 @@ class Animal {
             if (opponent.age >= 50) {
                 fight_counter = fight_counter + 5;
                 opponent.weight = 1;
-                System.out.println("Старый кот - подертый кот!");
+                System.out.println("Старая тварь - подертая тварь!");
             } else {
                 opponent.fight_counter++;
                 feet = feet - 1;
-                System.out.println("Старше кот, опытней кот!");
+                System.out.println("Старше скотина, опытней скотина!");
             }
         } else System.out.println(("Понаберали молодняка!"));
-        //go_to_Sleep(1000);
+        go_to_Sleep(500);
         if (opponent.h > h) {
             opponent.fight_counter = opponent.fight_counter + 2;
             feet = feet - 1;
@@ -126,7 +127,7 @@ class Animal {
             opponent.feet = opponent.feet - 1;
             System.out.println(opponent.name + " не дорос еще!По этому и лишился лапы.");
         }
-        //go_to_Sleep(1000);
+        go_to_Sleep(500);
         if (opponent.weight > weight && opponent.age < 30 && age > 30) {
             fight_counter++;
             opponent.tail = 0;
@@ -136,7 +137,7 @@ class Animal {
             fight_counter = fight_counter - 3;
             System.out.println("Куда прешь шашлык!");
         }
-        //go_to_Sleep(1000);
+        go_to_Sleep(500);
         if (opponent.tail > tail && opponent.feet > feet) {
             fight_counter++;
             System.out.println("Чувак! ты рыжая и хвостатая морда)))Да, да, это тебе " + opponent.name);
@@ -144,7 +145,7 @@ class Animal {
             opponent.fight_counter = opponent.fight_counter + 2;
             System.out.println(name + ", ты шашлык безхвостый!");
         }
-        //go_to_Sleep(1000);
+        go_to_Sleep(500);
         if (opponent.name.length() > 3 && name.length() < 5) {
             opponent.fight_counter++;
             System.out.println("Классное имя - " + opponent.name);
@@ -152,9 +153,9 @@ class Animal {
             fight_counter++;
             System.out.println("Воу! " + name);
         }
-        //go_to_Sleep(1000);
+        go_to_Sleep(500);
         System.out.println("Итоги битвы: ");
-        //go_to_Sleep(3000);
+        go_to_Sleep(1000);
         System.out.println("***********************");
         counter = fight_counter - opponent.fight_counter;
         int counter2 = Math.abs(counter);
@@ -176,7 +177,7 @@ class Animal {
             System.out.println(" накоцал!");
         }
         System.out.println("***********************");
-        //go_to_Sleep(3000);
+        go_to_Sleep(500);
         return winner;
     }
 

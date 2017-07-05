@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a54189f8-b542-4646-8a4b-a1cb98e40316" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lesson2/CatFighting.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TestPath/lesson2/Animals.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lesson2/Pig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestPath/lesson2/Cat.class" afterPath="$PROJECT_DIR$/out/production/TestPath/lesson2/Cat.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestPath/lesson2/Dog.class" afterPath="$PROJECT_DIR$/out/production/TestPath/lesson2/Dog.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestPath/lesson2/SoutMembers.class" afterPath="$PROJECT_DIR$/out/production/TestPath/lesson2/SoutMembers.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestPath/lesson2/SmallDog.class" afterPath="$PROJECT_DIR$/out/production/TestPath/lesson2/SmallDog.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/Cat.java" afterPath="$PROJECT_DIR$/src/lesson2/Cat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/Animal.java" afterPath="$PROJECT_DIR$/src/lesson2/Animal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/CatFighting.java" afterPath="$PROJECT_DIR$/src/lesson2/CatFighting.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/Dog.java" afterPath="$PROJECT_DIR$/src/lesson2/Dog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/SoutMembers.java" afterPath="$PROJECT_DIR$/src/lesson2/SoutMembers.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/lesson2/Animals.java" afterPath="$PROJECT_DIR$/src/lesson2/Animal.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lesson2/SmallDog.java" afterPath="$PROJECT_DIR$/src/lesson2/SmallDog.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CatFighting.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CatFighting.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lesson2/CatFighting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="44" column="46" lean-forward="true" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
+            <state relative-caret-position="255">
+              <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,9 +51,22 @@
       <file leaf-file-name="Cat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lesson2/Cat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="24" column="199" lean-forward="false" selection-start-line="24" selection-start-column="199" selection-end-line="24" selection-end-column="199" />
+            <state relative-caret-position="357">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lesson2/Pig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+              <folding>
+                <element signature="e#164#165#0" expanded="true" />
+                <element signature="e#213#214#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,8 +74,8 @@
       <file leaf-file-name="Dog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lesson2/Dog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+            <state relative-caret-position="765">
+              <caret line="51" column="203" lean-forward="false" selection-start-line="51" selection-start-column="203" selection-end-line="51" selection-end-column="203" />
               <folding />
             </state>
           </provider>
@@ -74,16 +86,23 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
               <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-              <folding />
+              <folding>
+                <element signature="e#223#224#0" expanded="false" />
+                <element signature="e#269#270#0" expanded="false" />
+                <element signature="e#563#564#0" expanded="false" />
+                <element signature="e#588#589#0" expanded="false" />
+                <element signature="e#801#802#0" expanded="false" />
+                <element signature="e#842#843#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Animal.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Animal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lesson2/Animal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2601">
-              <caret line="167" column="29" lean-forward="false" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+            <state relative-caret-position="1581">
+              <caret line="116" column="67" lean-forward="false" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -118,13 +137,14 @@
         <option value="$PROJECT_DIR$/src/lesson1/Task1.java" />
         <option value="$PROJECT_DIR$/src/lesson1/Task3.java" />
         <option value="$PROJECT_DIR$/src/lesson2/Enimals.java" />
-        <option value="$PROJECT_DIR$/src/lesson2/Dog.java" />
         <option value="$PROJECT_DIR$/src/lesson2/SmallDog.java" />
         <option value="$PROJECT_DIR$/src/lesson2/Animals.java" />
         <option value="$PROJECT_DIR$/src/lesson2/SoutMembers.java" />
+        <option value="$PROJECT_DIR$/src/lesson2/Dog.java" />
         <option value="$PROJECT_DIR$/src/lesson2/Cat.java" />
-        <option value="$PROJECT_DIR$/src/lesson2/CatFighting.java" />
+        <option value="$PROJECT_DIR$/src/lesson2/Pig.java" />
         <option value="$PROJECT_DIR$/src/lesson2/Animal.java" />
+        <option value="$PROJECT_DIR$/src/lesson2/CatFighting.java" />
       </list>
     </option>
   </component>
@@ -195,6 +215,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lesson1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="123" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java_test_2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -576,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498835998194</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fighting almost done!">
+      <created>1499093869968</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1499093869968</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -593,7 +634,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29326186" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39127105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -618,11 +659,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fight step 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="fight step 2" />
+    <MESSAGE value="fighting almost done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="fighting almost done!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -659,7 +701,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#223#224#0" expanded="false" />
+            <element signature="e#269#270#0" expanded="false" />
+            <element signature="e#563#564#0" expanded="false" />
+            <element signature="e#588#589#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#842#843#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -699,7 +748,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#223#224#0" expanded="false" />
+            <element signature="e#269#270#0" expanded="false" />
+            <element signature="e#563#564#0" expanded="false" />
+            <element signature="e#588#589#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#842#843#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -739,7 +795,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#223#224#0" expanded="false" />
+            <element signature="e#269#270#0" expanded="false" />
+            <element signature="e#563#564#0" expanded="false" />
+            <element signature="e#588#589#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#842#843#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -836,15 +899,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="39" column="28" lean-forward="false" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lesson2/Dog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
-          <folding />
+          <folding>
+            <element signature="e#223#224#0" expanded="false" />
+            <element signature="e#269#270#0" expanded="false" />
+            <element signature="e#563#564#0" expanded="false" />
+            <element signature="e#588#589#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#842#843#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -856,29 +918,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lesson2/Cat.java">
+    <entry file="file://$PROJECT_DIR$/src/lesson2/Dog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="199" lean-forward="false" selection-start-line="24" selection-start-column="199" selection-end-line="24" selection-end-column="199" />
+        <state relative-caret-position="765">
+          <caret line="51" column="203" lean-forward="false" selection-start-line="51" selection-start-column="203" selection-end-line="51" selection-end-column="203" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lesson2/CatFighting.java">
+    <entry file="file://$PROJECT_DIR$/src/lesson2/Cat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="46" lean-forward="true" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
+        <state relative-caret-position="357">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lesson2/Pig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#164#165#0" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lesson2/Animal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="167" column="29" lean-forward="false" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+        <state relative-caret-position="1581">
+          <caret line="116" column="67" lean-forward="false" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lesson2/CatFighting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="31" column="43" lean-forward="true" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

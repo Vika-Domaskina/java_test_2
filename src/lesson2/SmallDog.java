@@ -44,7 +44,7 @@ public class SmallDog extends Dog {
 
     @Override
     public String toString() {
-        return "I'm a small dog " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender + '\n' + "I have " + hair + " hair";
+        return "I'm strnamesCat small dog " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender + '\n' + "I have " + hair + " hair";
     }
 
 }

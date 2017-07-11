@@ -12,12 +12,7 @@ public class CatGamer {
     protected int weowVolume;
     protected String friendshipWithCats;
     protected String likeMilk;
-    
 
-    CatGamer(String name, double age) {
-        this.name = name;
-        this.age = age;
-    }
 
     @Override
     public String toString() {

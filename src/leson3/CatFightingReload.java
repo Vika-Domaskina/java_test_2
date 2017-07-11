@@ -9,11 +9,15 @@ import java.io.InputStreamReader;
  * Created by Viktoriya.D on 7/6/2017.
  */
 public class CatFightingReload {
-    static CatGamer gamer1 = new CatGamer("Barsik", 23);
-    static CatGamer gamer2 = new CatGamer("Figarsik", 26);
+    static CatGamer gamer1 = new CatGamer();
+    static CatGamer gamer2 = new CatGamer();
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) {
+        gamer1.name=inputName("Введите имя питомцА!");
+        gamer1.age=inputAge("Введите возраст своего питомцА!");
+        gamer2.name=inputName("Введите имя питомцА!");
+        gamer2.age=inputAge("Введите возраст своего питомцА!");
         introduceCat(gamer1);
         System.out.println("** ** ** ** ** ** ** ** **");
         introduceCat(gamer2);
@@ -96,6 +100,40 @@ public class CatFightingReload {
                 throw new NumberFormatException();
             } catch (Exception e) {
                 System.out.println("Не правильное значение, предпологается получить от 1 до 10");
+            }
+        }
+        return row;
+    }
+
+    public static String inputName(String question) {
+        String row;
+        System.out.println(question);
+        while (true) {
+            try {
+                row = reader.readLine();
+                if (row.length()<265 && row.length()>0) {
+                    break;
+                }
+                throw new NullPointerException();
+            } catch (Exception e) {
+                System.out.println("Введите корректное имя");
+            }
+        }
+        return row;
+    }
+
+    public static int inputAge(String question) {
+        int row;
+        System.out.println(question);
+        while (true) {
+            try {
+                row = Integer.valueOf(reader.readLine());
+                if (row > 0 && row < 100) {
+                    break;
+                }
+                throw new NumberFormatException();
+            } catch (Exception e) {
+                System.out.println("ВВедите правильный возраст");
             }
         }
         return row;

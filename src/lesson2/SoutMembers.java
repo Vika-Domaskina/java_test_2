@@ -27,6 +27,7 @@ public class SoutMembers {
         }*/
 
         Dog dog1 = new Dog(4, "Chak", "m", "Staf");
+        System.out.println(dog1.getClass().getName());
         /*System.out.println("\n" + "\n");
         System.out.println(dog1);
         dog1.voice();

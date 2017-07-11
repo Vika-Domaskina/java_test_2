@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Viktoriya.D on 6/14/2017.
  */
-class Animal {
+public class Animal {
     static protected long counter;
     protected int fight_counter = 10;
     protected double h;
@@ -35,7 +35,7 @@ class Animal {
 
     }
 
-    Animal(String name, double age, double h, int weight, int tail) {
+    public Animal(String name, double age, double h, int weight, int tail) {
         this.name = name;
         this.age = age;
         this.h = h;
@@ -95,9 +95,9 @@ class Animal {
         return this.colorsEyes;
     }
 
-    protected void go_to_Sleep(int sleep) {
+    public static void go_to_Sleep(int sleep) {
         try {
-            Thread.sleep(sleep);
+            Thread.sleep(sleep*5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

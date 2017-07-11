@@ -32,7 +32,7 @@ public class CatFighting {
         reGroup(namesDog1, namesDog2, "d");
         reGroup(namesPig1, namesPig2, "p");
         teamFighting(team1, team2);
-        soutWinners(winners1, winners2);
+        soutWinner(winners1, winners2);
 
     }
 
@@ -61,12 +61,12 @@ public class CatFighting {
             if ((team1.size() + team2.size()) % 2 != 0) {
                 if (team1.size() > team2.size()) {
                     System.out.println("* * * * *");
-                    team2.add(new Cat(Animal.louser.get(random.nextInt(Animal.louser.size())).name + " ZOMBI", random.nextInt(40), random.nextInt(70), random.nextInt(45), random.nextInt(50)));
+                    team2.add(new Cat(Animal.louser.get(random.nextInt(Animal.louser.size() - 1)).name + " ZOMBI", random.nextInt(40), random.nextInt(7000000), random.nextInt(410000000), random.nextInt(5000000)));
                     System.out.println("Бог рандома воскресил одного животного:\n" + team2.get(team2.size() - 1));
                     System.out.println("* * * * *");
                 } else {
                     System.out.println("* * * * *");
-                    team1.add(new Cat(Animal.louser.get(random.nextInt(Animal.louser.size())).name + " ZOMBI", random.nextInt(40), random.nextInt(70), random.nextInt(45), random.nextInt(50)));
+                    team1.add(new Cat(Animal.louser.get(random.nextInt(Animal.louser.size() - 1)).name + " ZOMBI", random.nextInt(40), random.nextInt(7000000), random.nextInt(44100005), random.nextInt(500000)));
                     System.out.println("Бог рандома воскресил одного животного:\n" + team1.get(team1.size() - 1));
                     System.out.println("* * * * *");
                 }
@@ -83,13 +83,14 @@ public class CatFighting {
             teamFighting(team1, team2);
         } else {
             System.out.println("* * * * * * * Ф И Н А Л!!! * * * * * * *");
-            System.out.println(team1.get(0).fight(team2.get(0)).toString());
+            Animal winner = team1.get(0).fight(team2.get(0));
+            System.out.println(winner);
 
         }
 
     }
 
-    static void soutWinners(ArrayList<Animal> winners1, ArrayList<Animal> winners2) {
+    static void soutWinner(ArrayList<Animal> winners1, ArrayList<Animal> winners2) {
         for (Animal w : winners1) {
             System.out.println(w);
         }

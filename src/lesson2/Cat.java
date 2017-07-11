@@ -8,7 +8,7 @@ public class Cat extends Animal {
         super(age, name, gender);
     }
 
-    Cat(String name, double age, double h, int weight, int tail) {
+    public Cat(String name, double age, double h, int weight, int tail) {
         super(name, age, h, weight, tail);
     }
 

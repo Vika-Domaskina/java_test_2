@@ -51,4 +51,8 @@ public class Dog extends Animal {
     public String toString() {
         return "I'm " + type + ":" + "\n" + "My age=" + age + "," + "\n" + "My name is " + name + ", " + '\n' + "My gender = " + gender+ "\nMy height " + h + "\nMy weight " + weight + "\nMy tail " + tail;
     }
+    @Override
+    public void eatSomething() {
+        System.out.println("ЖРАТЬ СОБАКЕ!");
+    }
 }

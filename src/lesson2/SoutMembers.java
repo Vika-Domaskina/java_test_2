@@ -61,7 +61,7 @@ public class SoutMembers {
         System.out.println("\n" + "\n");
         System.out.println(dog4);*/
 
-        Animal anim1 = new Animal(7, "Din", "m");
+
         /*Animal anim2 = new Animal (anim1);
         System.out.println("\n" + "\n");
         System.out.println(anim1);
@@ -92,5 +92,11 @@ public class SoutMembers {
 //        for (int i = 0; i < array.length; i++) {
 //            array[i].voice();
 //        }
+
+        Animal anim1 = new Cat(7, "Din", "m");
+        example(new Pig());
+    }
+    static void example(Eatable o){
+        o.eatSomething();
     }
 }

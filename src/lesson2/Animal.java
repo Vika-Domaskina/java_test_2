@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Viktoriya.D on 6/14/2017.
  */
-public class Animal {
+public abstract class Animal implements Eatable{
     static protected long counter;
     protected int fight_counter = 10;
     protected double h;
@@ -185,4 +185,6 @@ public class Animal {
     public String toString() {
         return "I'm Animal :\n" + "My age=" + age + ",\nMy name is " + name + ", \nMy gender=" + gender;
     }
+
+
 }

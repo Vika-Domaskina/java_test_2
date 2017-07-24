@@ -6,13 +6,6 @@ package lesson4;
 public abstract class Animal implements Voicable,Swimable {
     protected double age = 0;
     protected String name;
-    private static int counter=0;
-    void setCounter(){
-        System.out.println("This set counter from class Animal");
-        counter++;
-    }
-    int getCounter(){
-        System.out.println("This get counter from class Animal");
-        return counter;
-    }
+    protected static int counter=0;
+    protected abstract int getCounter();
 }

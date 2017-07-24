@@ -4,10 +4,13 @@ package lesson4;
  * Created by Viktoriya.D on 7/12/2017.
  */
 public class Cat extends Animal{
+    Cat(){
+        setCounter();
+    }
     static int counter;
     @Override
     public void swimming() {
-        System.out.println("I'm swimming");
+        System.out.println("Cat is swimming");
     }
 
     @Override
@@ -20,12 +23,17 @@ public class Cat extends Animal{
         System.out.println("WEEEEEEow!!!!!");
     }
 
-    void setCounter(){
+     private void setCounter(){
         System.out.println("This set counter from class Cat");
         counter++;
+        super.counter++;
     }
-    int getCounter(){
+
+    @Override
+    protected int getCounter(){
         System.out.println("This get counter from class Cat");
+        System.out.println("Cat counter: "+counter);
+        System.out.println("Animal counter: "+super.counter);
         return counter;
     }
 }

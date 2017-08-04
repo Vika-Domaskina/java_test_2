@@ -17,16 +17,31 @@ public class Window1 {
     private JButton xButton;
     private JTextField chooseYourTypeTextField;
     private JPanel mainPanel;
-    private JTextArea textArea1;
 
     public Window1() {
         clientButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clientButton.setText("Clicked!");
+                chooseYourTypeTextField.setText("Selected!");
+                clientButton.setVisible(false);
+                xButton.setVisible(false);
+                /*mainPanel.setVisible(false);*/
             }
         });
-        textArea1.addComponentListener(new ComponentAdapter() {
+
+        xButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chooseYourTypeTextField.setText("Selected!");
+                clientButton.setVisible(false);
+                xButton.setVisible(false);
+                /*mainPanel.setVisible(false);*/
+            }
         });
     }
 

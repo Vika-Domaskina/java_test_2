@@ -5,6 +5,7 @@ package BigGame;
  * Created by Viktoriya.D on 8/1/2017.
  */
 public class Battlefield {
+    int tplayer;
     private Integer[][] arr = new Integer[3][3];
 
     public void resetField() {
@@ -60,6 +61,7 @@ public class Battlefield {
     }
 
     public boolean doStroke(int xPosition, int yPosition, int player) {
+        tplayer=player;
         if (isGameOver()) {
             System.out.println("Game is over");
             return true;

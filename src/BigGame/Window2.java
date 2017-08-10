@@ -28,7 +28,7 @@ public class Window2 {
     ImageIcon imageTypePlayer;
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
-    JDialog jDialog=new JDialog(new JFrame(), "Now, do stroke player: " + typePlayer, null);
+    final JDialog jDialog=new JDialog(new JFrame(), "Now, do stroke player: " + typePlayer, null);
 
     public Window2() {
 
@@ -264,7 +264,8 @@ public class Window2 {
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
         }
         counterPlayer++;
-        jDialog.isShowing();
+        //jDialog.repaint(80000,150,150,80,70);
+        jDialog.isVisible();
         return typePlayer;
     }
 
@@ -290,7 +291,7 @@ public class Window2 {
         frame.pack();
         frame.setVisible(true);
         battlefield.resetField();
-        /*JDialog jDialog=new JDialog(frame, "Now, do stroke player: " + typePlayer, null);*/
+        //JDialog jDialog=new JDialog(frame, "Now, do stroke player: " + battlefield.tplayer, null);
         //battlefield.doStroke();
         //window2.getTypePlayer();
 

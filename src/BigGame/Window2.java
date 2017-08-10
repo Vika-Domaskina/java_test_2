@@ -3,6 +3,7 @@ package BigGame;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Created by Viktoriya.D on 7/31/2017.
@@ -19,14 +20,15 @@ public class Window2 {
     private JButton button9;
     JPanel mainPanel;
     private JButton newGameButton;
+    private ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
     int counterPlayer = 0;
     int typePlayer;
     int xPosit;
     int yPosit;
     ImageIcon imageTypePlayer;
-    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Krestiki/Noliki");
-    ;
+    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
+    JDialog jDialog=new JDialog(new JFrame(), "Now, do stroke player: " + typePlayer, null);
 
     public Window2() {
 
@@ -43,15 +45,14 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button1.setIcon(imageTypePlayer);
                 button1.setEnabled(false);
                 button1.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button2.addActionListener(new ActionListener() {
@@ -66,15 +67,14 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button2.setIcon(imageTypePlayer);
                 button2.setEnabled(false);
                 button2.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button3.addActionListener(new ActionListener() {
@@ -89,15 +89,14 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button3.setIcon(imageTypePlayer);
                 button3.setEnabled(false);
                 button3.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button4.addActionListener(new ActionListener() {
@@ -112,15 +111,14 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button4.setIcon(imageTypePlayer);
                 button4.setEnabled(false);
                 button4.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button5.addActionListener(new ActionListener() {
@@ -135,15 +133,14 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button5.setIcon(imageTypePlayer);
                 button5.setEnabled(false);
                 button5.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button6.addActionListener(new ActionListener() {
@@ -158,15 +155,14 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button6.setIcon(imageTypePlayer);
                 button6.setEnabled(false);
                 button6.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button7.addActionListener(new ActionListener() {
@@ -181,15 +177,14 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button7.setIcon(imageTypePlayer);
                 button7.setEnabled(false);
                 button7.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button8.addActionListener(new ActionListener() {
@@ -204,15 +199,14 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button8.setIcon(imageTypePlayer);
                 button8.setEnabled(false);
                 button8.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         button9.addActionListener(new ActionListener() {
@@ -227,15 +221,15 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                battlefield.doStroke(xPosit, yPosit, typePlayer);
+               // popapWindow.
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
+                    for (int i=0;i<9;i++){
+                        buttonArrayList.get(i).setEnabled(false);
+                    }
+                }
                 button9.setIcon(imageTypePlayer);
                 button9.setEnabled(false);
                 button9.setText("");
-                if (battlefield.isGameOver()) {
-                    System.out.println("Congrats");
-                } else {
-                    System.out.println("The next player walks");
-                }
             }
         });
         newGameButton.addActionListener(new ActionListener() {
@@ -248,23 +242,17 @@ public class Window2 {
             public void actionPerformed(ActionEvent e) {
                 imageTypePlayer = defaultIcon;
                 counterPlayer = 0;
-                resetGame(button1);
-                resetGame(button2);
-                resetGame(button3);
-                resetGame(button4);
-                resetGame(button5);
-                resetGame(button6);
-                resetGame(button7);
-                resetGame(button8);
-                resetGame(button9);
+                resetGame();
                 battlefield.resetField();
             }
         });
     }
 
-    public void resetGame(JButton button) {
-        button.setEnabled(true);
-        button.setIcon(defaultIcon);
+    public void resetGame() {
+        for (int i=0;i<9;i++){
+            buttonArrayList.get(i).setEnabled(true);
+            buttonArrayList.get(i).setIcon(defaultIcon);
+        }
     }
 
     public int getTypePlayer() {
@@ -275,21 +263,34 @@ public class Window2 {
             typePlayer = 2;
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
         }
-        System.out.println("Do stroke player : " + typePlayer);
-
-
         counterPlayer++;
+        jDialog.isShowing();
         return typePlayer;
+    }
+
+    public void initArrayButtons() {
+        buttonArrayList.add(button1);
+        buttonArrayList.add(button2);
+        buttonArrayList.add(button3);
+        buttonArrayList.add(button4);
+        buttonArrayList.add(button5);
+        buttonArrayList.add(button6);
+        buttonArrayList.add(button7);
+        buttonArrayList.add(button8);
+        buttonArrayList.add(button9);
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("My Game");
         Window2 window2 = new Window2();
+        window2.initArrayButtons();
+        window2.resetGame();
         frame.setContentPane(window2.mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         battlefield.resetField();
+        /*JDialog jDialog=new JDialog(frame, "Now, do stroke player: " + typePlayer, null);*/
         //battlefield.doStroke();
         //window2.getTypePlayer();
 

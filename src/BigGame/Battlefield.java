@@ -59,17 +59,30 @@ public class Battlefield {
         return false;
     }
 
-    public void doStroke(int xPosition, int yPosition, int player) {
+    public boolean doStroke(int xPosition, int yPosition, int player) {
         if (isGameOver()) {
             System.out.println("Game is over");
-        }else {
-            if (isCanStroke()){
+            return true;
+        } else {
+            if (isCanStroke()) {
                 arr[xPosition][yPosition] = player;
-            }else {
+                if (isGameOver()) {
+                    System.out.println("Congrats, " + player + " player win!");
+                    return true;
+                } else {
+                    if (!isCanStroke()) {
+                        System.out.println("Game is over, have not strokes");
+                        return true;
+                    } else {
+                        System.out.println("Do stroke player : " + player);
+                        return false;
+                    }
+                }
+            } else {
                 System.out.println("Game is over, have not strokes");
+                return true;
             }
         }
-
         /*if (!isGameOver() && isCanStroke()) {
             arr[xPosition][yPosition] = player;
         } else

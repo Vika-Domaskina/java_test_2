@@ -1,12 +1,8 @@
 package BigGame;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.*;
 
-import javax.swing.ImageIcon;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import javax.swing.*;
 
 /**

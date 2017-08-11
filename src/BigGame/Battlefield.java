@@ -1,6 +1,8 @@
 package BigGame;
 
 
+import javax.swing.*;
+
 /**
  * Created by Viktoriya.D on 8/1/2017.
  */
@@ -69,10 +71,12 @@ public class Battlefield {
             if (isCanStroke()) {
                 arr[xPosition][yPosition] = player;
                 if (isGameOver()) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Congrats, " + player + " player win!");
                     System.out.println("Congrats, " + player + " player win!");
                     return true;
                 } else {
                     if (!isCanStroke()) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Game is over, have not strokes");
                         System.out.println("Game is over, have not strokes");
                         return true;
                     } else {
@@ -81,6 +85,7 @@ public class Battlefield {
                     }
                 }
             } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Game is over, have not strokes");
                 System.out.println("Game is over, have not strokes");
                 return true;
             }

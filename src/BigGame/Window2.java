@@ -28,7 +28,6 @@ public class Window2 {
     ImageIcon imageTypePlayer;
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
-    final JDialog jDialog=new JDialog(new JFrame(), "Now, do stroke player: " + typePlayer, null);
 
     public Window2() {
 
@@ -45,8 +44,8 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -67,8 +66,8 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -89,8 +88,8 @@ public class Window2 {
                 yPosit = 0;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -111,8 +110,8 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -133,8 +132,8 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -155,8 +154,8 @@ public class Window2 {
                 yPosit = 1;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -177,8 +176,8 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -199,8 +198,8 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -221,9 +220,8 @@ public class Window2 {
                 yPosit = 2;
                 System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
                 int typePlayer = getTypePlayer();
-               // popapWindow.
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)){
-                    for (int i=0;i<9;i++){
+                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
+                    for (int i = 0; i < 9; i++) {
                         buttonArrayList.get(i).setEnabled(false);
                     }
                 }
@@ -249,7 +247,7 @@ public class Window2 {
     }
 
     public void resetGame() {
-        for (int i=0;i<9;i++){
+        for (int i = 0; i < 9; i++) {
             buttonArrayList.get(i).setEnabled(true);
             buttonArrayList.get(i).setIcon(defaultIcon);
         }
@@ -264,8 +262,6 @@ public class Window2 {
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
         }
         counterPlayer++;
-        //jDialog.repaint(80000,150,150,80,70);
-        jDialog.isVisible();
         return typePlayer;
     }
 
@@ -291,10 +287,6 @@ public class Window2 {
         frame.pack();
         frame.setVisible(true);
         battlefield.resetField();
-        //JDialog jDialog=new JDialog(frame, "Now, do stroke player: " + battlefield.tplayer, null);
-        //battlefield.doStroke();
-        //window2.getTypePlayer();
-
     }
 }
 

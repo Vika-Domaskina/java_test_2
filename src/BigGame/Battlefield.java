@@ -62,7 +62,7 @@ public class Battlefield {
         return false;
     }
 
-    public boolean doStroke(int xPosition, int yPosition, int player) {
+    public boolean doStroke(int xPosition, int yPosition, int player, JFrame frame) {
         tplayer=player;
         if (isGameOver()) {
             System.out.println("Game is over");
@@ -71,12 +71,12 @@ public class Battlefield {
             if (isCanStroke()) {
                 arr[xPosition][yPosition] = player;
                 if (isGameOver()) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Congrats, " + player + " player win!");
+                    JOptionPane.showMessageDialog(frame, "Congrats, " + player + " player win!");
                     System.out.println("Congrats, " + player + " player win!");
                     return true;
                 } else {
                     if (!isCanStroke()) {
-                        JOptionPane.showMessageDialog(new JFrame(), "Game is over, have not strokes");
+                        JOptionPane.showMessageDialog(frame, "Game is over, have not strokes");
                         System.out.println("Game is over, have not strokes");
                         return true;
                     } else {
@@ -85,7 +85,7 @@ public class Battlefield {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(new JFrame(), "Game is over, have not strokes");
+                JOptionPane.showMessageDialog(frame, "Game is over, have not strokes");
                 System.out.println("Game is over, have not strokes");
                 return true;
             }
@@ -98,17 +98,6 @@ public class Battlefield {
 
     public static void main(String[] args) {
 
-        Battlefield battlefield = new Battlefield();
-        battlefield.resetField();
-
-        battlefield.doStroke(0, 0, 1);
-        //paintField(arr);
-        battlefield.doStroke(1, 1, 2);
-        //paintField(arr);
-        battlefield.doStroke(2, 0, 2);
-        battlefield.doStroke(1, 2, 2);
-        battlefield.doStroke(0, 2, 2);
-        battlefield.doStroke(2, 2, 2);
     }
 
 }

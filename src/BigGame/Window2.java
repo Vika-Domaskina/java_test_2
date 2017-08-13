@@ -9,6 +9,32 @@ import java.util.ArrayList;
  * Created by Viktoriya.D on 7/31/2017.
  */
 public class Window2 {
+
+    class FieldCellActionListener implements ActionListener {
+        public FieldCellActionListener(int x, int y){
+            //super();
+            this.xPosit =x ;
+            this.yPosit=y;
+        }
+
+        int xPosit;
+        int yPosit;
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton button =((JButton)e.getSource());
+            System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
+            int typePlayer = getTypePlayer();
+            button.setIcon(imageTypePlayer);
+            if (battlefield.doStroke(xPosit, yPosit, typePlayer, frame)) {
+                for (int i = 0; i < 9; i++) {
+                    buttonArrayList.get(i).setEnabled(false);
+                }
+            }
+            button.setEnabled(false);
+            button.setText("");
+        }
+    }
+
     private JButton button1;
     private JButton button2;
     private JButton button3;
@@ -25,211 +51,31 @@ public class Window2 {
     int typePlayer;
     int xPosit;
     int yPosit;
+    JFrame frame;
     ImageIcon imageTypePlayer;
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
 
     public Window2() {
+        frame = new JFrame("My Game");
 
+        this.initArrayButtons();
+        this.resetGame();
+        frame.setContentPane(this.mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        battlefield.resetField();
 
-        button1.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 0;
-                yPosit = 0;
-                System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button1.setIcon(imageTypePlayer);
-                button1.setEnabled(false);
-                button1.setText("");
-            }
-        });
-        button2.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 1;
-                yPosit = 0;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button2.setIcon(imageTypePlayer);
-                button2.setEnabled(false);
-                button2.setText("");
-            }
-        });
-        button3.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 2;
-                yPosit = 0;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button3.setIcon(imageTypePlayer);
-                button3.setEnabled(false);
-                button3.setText("");
-            }
-        });
-        button4.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 0;
-                yPosit = 1;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button4.setIcon(imageTypePlayer);
-                button4.setEnabled(false);
-                button4.setText("");
-            }
-        });
-        button5.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 1;
-                yPosit = 1;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button5.setIcon(imageTypePlayer);
-                button5.setEnabled(false);
-                button5.setText("");
-            }
-        });
-        button6.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 2;
-                yPosit = 1;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button6.setIcon(imageTypePlayer);
-                button6.setEnabled(false);
-                button6.setText("");
-            }
-        });
-        button7.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 0;
-                yPosit = 2;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button7.setIcon(imageTypePlayer);
-                button7.setEnabled(false);
-                button7.setText("");
-            }
-        });
-        button8.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 1;
-                yPosit = 2;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button8.setIcon(imageTypePlayer);
-                button8.setEnabled(false);
-                button8.setText("");
-            }
-        });
-        button9.addActionListener(new ActionListener() {
-            /**
-             * Invoked when an action occurs.
-             *
-             * @param e
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                xPosit = 2;
-                yPosit = 2;
-                System.out.println("Cordinate position: x:" + xPosit + "y:" + yPosit);
-                int typePlayer = getTypePlayer();
-                if (battlefield.doStroke(xPosit, yPosit, typePlayer)) {
-                    for (int i = 0; i < 9; i++) {
-                        buttonArrayList.get(i).setEnabled(false);
-                    }
-                }
-                button9.setIcon(imageTypePlayer);
-                button9.setEnabled(false);
-                button9.setText("");
-            }
-        });
+        button1.addActionListener(new FieldCellActionListener(0,0));
+        button2.addActionListener(new FieldCellActionListener(1,0));
+        button3.addActionListener(new FieldCellActionListener(2,0));
+        button4.addActionListener(new FieldCellActionListener(0,1));
+        button5.addActionListener(new FieldCellActionListener(1,1));
+        button6.addActionListener(new FieldCellActionListener(2,1));
+        button7.addActionListener(new FieldCellActionListener(0,2));
+        button8.addActionListener(new FieldCellActionListener(1,2));
+        button9.addActionListener(new FieldCellActionListener(2,2));
         newGameButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -278,15 +124,8 @@ public class Window2 {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("My Game");
-        Window2 window2 = new Window2();
-        window2.initArrayButtons();
-        window2.resetGame();
-        frame.setContentPane(window2.mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        battlefield.resetField();
+        new Window2();
+
     }
 }
 

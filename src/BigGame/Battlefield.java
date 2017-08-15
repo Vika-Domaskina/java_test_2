@@ -7,7 +7,7 @@ import javax.swing.*;
  * Created by Viktoriya.D on 8/1/2017.
  */
 public class Battlefield {
-    int tplayer;
+    private int tplayer;
     private Integer[][] arr = new Integer[3][3];
 
     public void resetField() {
@@ -63,16 +63,16 @@ public class Battlefield {
     }
 
     public boolean doStroke(int xPosition, int yPosition, int player, JFrame frame) {
-        tplayer=player;
+        tplayer = player;
         if (isGameOver()) {
             System.out.println("Game is over");
             return true;
         } else {
             if (isCanStroke()) {
-                arr[xPosition][yPosition] = player;
+                arr[xPosition][yPosition] = tplayer;
                 if (isGameOver()) {
-                    JOptionPane.showMessageDialog(frame, "Congrats, " + player + " player win!");
-                    System.out.println("Congrats, " + player + " player win!");
+                    JOptionPane.showMessageDialog(frame, "Congrats, " + tplayer + " player win!");
+                    System.out.println("Congrats, " + tplayer + " player win!");
                     return true;
                 } else {
                     if (!isCanStroke()) {
@@ -80,7 +80,7 @@ public class Battlefield {
                         System.out.println("Game is over, have not strokes");
                         return true;
                     } else {
-                        System.out.println("Do stroke player : " + player);
+                        System.out.println("Do stroke player : " + tplayer);
                         return false;
                     }
                 }

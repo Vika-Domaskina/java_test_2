@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="BigGame.Window2">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="400" left="400" bottom="400" right="400"/>
     <constraints>
       <xy x="20" y="20" width="1870" height="1727"/>
@@ -22,7 +22,9 @@
         <constraints>
           <grid row="0" column="0" row-span="4" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="false"/>
+        </properties>
         <border type="bevel-lowered"/>
         <children>
           <component id="9ac10" class="javax.swing.JButton" binding="button1" default-binding="true">
@@ -148,59 +150,79 @@
           <verticalAlignment value="0"/>
         </properties>
       </component>
-      <scrollpane id="d527a" binding="dialogPanel">
+      <grid id="7f6f0" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="3ed41" class="javax.swing.JTextArea" binding="msg_area">
-            <constraints/>
+          <component id="68f70" class="javax.swing.JButton" binding="sendButton">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
-              <alignmentX value="0.0"/>
-              <alignmentY value="0.5"/>
-              <autoscrolls value="true"/>
-              <caretColor color="-4670695"/>
-              <columns value="20"/>
-              <dragEnabled value="true"/>
-              <focusCycleRoot value="false"/>
-              <font name="Curlz MT" size="20" style="2"/>
-              <lineWrap value="true"/>
-              <preferredSize width="500" height="250"/>
-              <rows value="5"/>
-              <verifyInputWhenFocusTarget value="true"/>
-              <wrapStyleWord value="true"/>
+              <background color="-4475867"/>
+              <font name="Curlz MT" size="20" style="0"/>
+              <foreground color="-14533189"/>
+              <text value="Send"/>
             </properties>
-            <clientProperties>
-              <html.disable class="java.lang.Boolean" value="false"/>
-            </clientProperties>
           </component>
+          <component id="acfde" class="javax.swing.JTextField" binding="msg_field">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="200" height="70"/>
+                <preferred-size width="200" height="70"/>
+                <maximum-size width="200" height="70"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Curlz MT" size="20" style="2"/>
+            </properties>
+          </component>
+          <scrollpane id="3af6f">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <nextFocusableComponent value=""/>
+              <opaque value="true"/>
+              <requestFocusEnabled value="true"/>
+              <verifyInputWhenFocusTarget value="false"/>
+              <verticalScrollBarPolicy value="22"/>
+              <wheelScrollingEnabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="7dec6" class="javax.swing.JTextArea" binding="msg_area">
+                <constraints/>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <alignmentY value="0.5"/>
+                  <autoscrolls value="true"/>
+                  <caretColor color="-4670695"/>
+                  <columns value="0"/>
+                  <dragEnabled value="false"/>
+                  <focusCycleRoot value="false"/>
+                  <font name="Curlz MT" size="20" style="2"/>
+                  <lineWrap value="true"/>
+                  <preferredSize width="0" height="0"/>
+                  <rows value="0"/>
+                  <text value=""/>
+                  <verifyInputWhenFocusTarget value="false"/>
+                  <visible value="true"/>
+                  <wrapStyleWord value="true"/>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
-      </scrollpane>
-      <component id="425c0" class="javax.swing.JTextField" binding="msg_field">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="200" height="70"/>
-            <preferred-size width="200" height="70"/>
-            <maximum-size width="200" height="70"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Curlz MT" size="20" style="2"/>
-        </properties>
-      </component>
-      <component id="192ac" class="javax.swing.JButton" binding="sendButton">
-        <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-4475867"/>
-          <font name="Curlz MT" size="20" style="0"/>
-          <foreground color="-14533189"/>
-          <text value="Send"/>
-        </properties>
-      </component>
+      </grid>
     </children>
   </grid>
 </form>

@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -51,10 +50,9 @@ public class Window2 {
     private JButton button9;
     JPanel mainPanel;
     private JButton newGameButton;
-    private JTextArea msg_area = new JTextArea(5, 20);
+    private JTextArea msg_area;
     private JTextField msg_field;
     private JButton sendButton;
-    private JScrollPane dialogPanel;
     private ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
     int counterPlayer = 0;
     int typePlayer;
@@ -70,8 +68,9 @@ public class Window2 {
         msg_area.setLineWrap(true);
         this.initArrayButtons();
         this.resetGame();
+        //mainPanel.add(dialogPanel);
         frame.setContentPane(this.mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         battlefield.resetField();
@@ -108,14 +107,37 @@ public class Window2 {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-//                sendButton.setEnabled(true);
-                if (msg_field.getText().equals("car")) {
+                msg_area.append(msg_field.getText() + "\n");
+                System.out.println(msg_field.getText());
+                msg_field.setText("");
+            }
+        });
+        msg_field.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (msg_field.getText().equals("")) {
                     sendButton.setEnabled(false);
-                } else {
-                    /*msg_area.append(msg_field.getText());*/
-                    msg_area.setText("\n" + msg_field.getText());
-                    msg_area.setCaretPosition(msg_area.getDocument().getLength());
+                } else sendButton.setEnabled(true);
+            }
+        });
+        msg_field.addKeyListener(new KeyAdapter() {
+            /**
+             * Invoked when a key has been pressed.
+             *
+             * @param e
+             */
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                    msg_area.append(msg_field.getText() + "\n");
                     System.out.println(msg_field.getText());
+                    msg_field.setText("");
+                    sendButton.setEnabled(true);
                 }
             }
         });

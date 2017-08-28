@@ -14,7 +14,7 @@ public class UserDB {
     public static FileIO fileIO = new FileIO();
     public static String statementNumber = "";
     static HashMap dictionaryUsers = new HashMap<Integer, User>();
-    static ArrayList<Integer> idUsers;
+    static ArrayList<Integer> idUsers = new ArrayList<>();
 
     public static HashMap createDictionaryUsers() throws IOException {
         fileIO.readFile();
@@ -49,6 +49,31 @@ public class UserDB {
         return statementNumber;
     }
 
+
+    public static void checkValidationID() {
+        System.out.println("you should input ID at first! ");
+        statementNumber = consoleReader.readConsole();
+        if (Integer.parseInt(statementNumber) > 0 && Integer.parseInt(statementNumber) < 1000000000) {
+            System.out.println("ID your user: " + statementNumber);
+        }
+    }
+
+    public static void checkValidationName() {
+        System.out.println("you should input name ! ");
+        statementNumber = consoleReader.readConsole();
+        if (statementNumber.length() < 100 && statementNumber.length() < 0) {
+            System.out.println("Name : " + statementNumber);
+        }
+    }
+
+    public static void checkValidationPhone() {
+        System.out.println("you should input phone! ");
+        statementNumber = consoleReader.readConsole();
+        if (Integer.parseInt(statementNumber) > 0 && Integer.parseInt(statementNumber) < 100) {
+            System.out.println("Phone: " + statementNumber);
+        }
+    }
+
     public static void selectStatement() throws IOException {
         System.out.println("If you want to select some user you should input ID. If you want to select all users you should press 'Enter'." + "\n" + " So your choose! ");
         statementNumber = consoleReader.readConsole();
@@ -59,15 +84,17 @@ public class UserDB {
                 System.out.println(me.getValue());
             }
         } else {
-            for (int i=0; i<idUsers.size();i++){
-                if (Integer.parseInt(statementNumber)==idUsers.get(i)){
+            for (int i = 0; i < idUsers.size(); i++) {
+                if (Integer.parseInt(statementNumber) == idUsers.get(i)) {
                     System.out.println(dictionaryUsers.get(Integer.parseInt(statementNumber)));
-                } else{
-                    System.out.println("User not found!");
                 }
             }
         }
         fileIO.writeFile(dictionaryUsers);
+    }
+
+    public static void insertStatement() throws IOException {
+        
     }
 
     public static void main(String[] args) throws IOException {

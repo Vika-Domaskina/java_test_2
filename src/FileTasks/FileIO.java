@@ -1,5 +1,7 @@
 package FileTasks;
 
+import sun.security.util.Length;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -37,9 +39,12 @@ public class FileIO {
         for (Map.Entry<Integer, User> me : set) {
             System.out.print(me.getKey() + " : ");
             System.out.println(me.getValue());
-            /*try (FileOutputStream fileOutputStream = new FileOutputStream(fileDB)) {
-                for (int i=0;i<lenth(me.getValue()))
-            }*/
+            String string = me.getValue().toString();
+            try (FileOutputStream fileOutputStream = new FileOutputStream(fileDB,false)) {
+                for (int i=0;i <string.length() ; i++){
+                    fileOutputStream.write(string.charAt(i));
+                }
+            }
         }
         System.out.println();
     }

@@ -14,7 +14,7 @@ public class ConsoleReader {
         try {
             return readOfConsole.readLine();
         } catch (IOException e) {
-            System.out.println("Error read from console");
+            System.out.println("Error:" + e);
             return "";
         }
 

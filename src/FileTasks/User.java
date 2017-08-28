@@ -16,6 +16,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "UserId: " + userId + "\n" + "UserName: " + userName + "\n" + "UserPhone: " + userPhone;
+        return "UserId: " + userId + "\n" + "UserName: " + userName + "\n" + "UserPhone: " + userPhone + "\n";
     }
 }

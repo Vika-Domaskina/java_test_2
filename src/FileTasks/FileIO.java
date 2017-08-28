@@ -1,7 +1,11 @@
 package FileTasks;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by vika on 27.08.2017.
@@ -23,11 +27,24 @@ public class FileIO {
             System.out.println("Error" + e);
         }
         masivUsers = file.split(";");
-        dictionaryUsers.put(Integer.parseInt(masivUsers[0]), new User(Integer.parseInt(masivUsers[0]), masivUsers[1], masivUsers[2]));
+        for (int i = 0; i < masivUsers.length; i = i + 3) {
+            dictionaryUsers.put(Integer.parseInt(masivUsers[i + 0]), new User(Integer.parseInt(masivUsers[i + 0]), masivUsers[i + 1], masivUsers[i + 2]));
+        }
         return dictionaryUsers;
+    }
+
+    static public void writeFile(HashMap dictionary) throws IOException {
+        System.out.println("write array!!");
+        Set<Map.Entry<Integer, User>> set = dictionary.entrySet();  //Returns a Set view of the mappings contained in this map.
+        for (Map.Entry<Integer, User> me : set) {
+            System.out.print(me.getKey() + " : ");
+            System.out.println(me.getValue());
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) throws IOException {
         System.out.println(readFile());
+        writeFile(dictionaryUsers);
     }
 }

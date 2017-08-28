@@ -2,6 +2,7 @@ package FileTasks;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +13,11 @@ import java.util.Set;
  */
 public class FileIO {
     static File fileDB = new File("D:/java_test_2/src/FileTasks/db.txt");
-    static HashMap dictionaryUsers = new HashMap<Integer, User>();
 
-    static public HashMap readFile() throws IOException {
+    static String[] masivUsers;
+
+    static public String[] readFile() throws IOException {
         String file = "";
-        String[] masivUsers;
         try (FileInputStream fileInputStream = new FileInputStream(fileDB)) {
             int i;
             while ((i = fileInputStream.read()) != -1) {
@@ -27,10 +28,7 @@ public class FileIO {
             System.out.println("Error" + e);
         }
         masivUsers = file.split(";");
-        for (int i = 0; i < masivUsers.length; i = i + 3) {
-            dictionaryUsers.put(Integer.parseInt(masivUsers[i + 0]), new User(Integer.parseInt(masivUsers[i + 0]), masivUsers[i + 1], masivUsers[i + 2]));
-        }
-        return dictionaryUsers;
+       return masivUsers;
     }
 
     static public void writeFile(HashMap dictionary) throws IOException {
@@ -39,12 +37,15 @@ public class FileIO {
         for (Map.Entry<Integer, User> me : set) {
             System.out.print(me.getKey() + " : ");
             System.out.println(me.getValue());
+            /*try (FileOutputStream fileOutputStream = new FileOutputStream(fileDB)) {
+                for (int i=0;i<lenth(me.getValue()))
+            }*/
         }
         System.out.println();
     }
 
     public static void main(String[] args) throws IOException {
         System.out.println(readFile());
-        writeFile(dictionaryUsers);
+        //writeFile(dictionaryUsers);
     }
 }

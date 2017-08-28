@@ -16,6 +16,7 @@ import java.util.Set;
 public class FileIO {
     static File fileDB = new File("D:/java_test_2/src/FileTasks/db.txt");
 
+
     static String[] masivUsers;
 
     static public String[] readFile() throws IOException {
@@ -30,20 +31,19 @@ public class FileIO {
             System.out.println("Error" + e);
         }
         masivUsers = file.split(";");
-       return masivUsers;
+        return masivUsers;
     }
 
     static public void writeFile(HashMap dictionary) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(fileDB, false);
         System.out.println("write array!!");
         Set<Map.Entry<Integer, User>> set = dictionary.entrySet();  //Returns a Set view of the mappings contained in this map.
         for (Map.Entry<Integer, User> me : set) {
             System.out.print(me.getKey() + " : ");
             System.out.println(me.getValue());
             String string = me.getValue().toString();
-            try (FileOutputStream fileOutputStream = new FileOutputStream(fileDB,false)) {
-                for (int i=0;i <string.length() ; i++){
-                    fileOutputStream.write(string.charAt(i));
-                }
+            for (int i = 0; i < string.length(); i++) {
+                fileOutputStream.write(string.charAt(i));
             }
         }
         System.out.println();

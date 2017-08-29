@@ -1,9 +1,6 @@
 package BigGame;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -12,9 +9,8 @@ import java.net.Socket;
 public class Client {
 
     public static Socket clientSocket;
-    public static InputStreamReader in;
-    public static OutputStreamWriter out;
-    public static InputStreamReader inu;
+    public static OutputStream out;
+
     public static int readByte;
 
     public static void createClientConnection() throws IOException {
@@ -24,16 +20,13 @@ public class Client {
 
     public static void chat() throws IOException {
         System.out.println("Input your message:");
-        inu = new InputStreamReader(System.in);
-        out = new OutputStreamWriter(clientSocket.getOutputStream());
-        int i;
-        while ((i = inu.read()) != -1) {
-            out.write(i);
-        }
-        in = new InputStreamReader(clientSocket.getInputStream());
-        while ((readByte = in.read()) != -1) {
-            System.out.println(readByte);
-        }
+        //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
+        BufferedWriter out =new BufferedWriter(new OutputStreamWriter( clientSocket.getOutputStream()));
+        String reader = "client";
+        out.write(reader);
+        BufferedReader in = new BufferedReader (new InputStreamReader(clientSocket.getInputStream()));
+        String msg=in.readLine();
+        System.out.println(msg);
     }
 
     public static void main(String[] args) throws IOException {

@@ -1,9 +1,6 @@
 package BigGame;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,11 +8,8 @@ import java.net.Socket;
  * Created by Viktoriya.D on 8/22/2017.
  */
 public class Server {
-    public static Socket fromclient = null;
-    public static ServerSocket socket = null;
-    public static InputStreamReader in;
-    public static OutputStreamWriter out;
-    public static InputStreamReader inu;
+    private static Socket fromclient;
+    private static ServerSocket socket;
     public static int readByte;
 
     public static void createServerConnection() {
@@ -46,16 +40,13 @@ public class Server {
 
     public static void chat() throws IOException {
         System.out.println("Input your message:");
-        inu = new InputStreamReader(System.in);
-        out = new OutputStreamWriter(fromclient.getOutputStream());
-        int i;
-        while ((i = inu.read()) != -1) {
-            out.write(i);
-        }
-        in = new InputStreamReader(fromclient.getInputStream());
-        while ((readByte = in.read()) != -1) {
-            System.out.println(readByte);
-        }
+        //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
+        BufferedWriter out =new BufferedWriter(new OutputStreamWriter( fromclient.getOutputStream()));
+        String reader = "server";
+        out.write(reader);
+        BufferedReader in = new BufferedReader (new InputStreamReader(fromclient.getInputStream()));
+        String msg=in.readLine();
+        System.out.println(msg);
     }
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Server side");

@@ -21,11 +21,12 @@ public class Client {
     public static void chat() throws IOException {
         System.out.println("Input your message:");
         //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
-        BufferedWriter out =new BufferedWriter(new OutputStreamWriter( clientSocket.getOutputStream()));
+        OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream());
         String reader = "client";
         out.write(reader);
-        BufferedReader in = new BufferedReader (new InputStreamReader(clientSocket.getInputStream()));
-        String msg=in.readLine();
+        out.flush();
+        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        String msg = in.readLine();
         System.out.println(msg);
     }
 

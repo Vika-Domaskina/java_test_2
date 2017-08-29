@@ -1,6 +1,9 @@
 package BigGame;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -41,17 +44,19 @@ public class Server {
     public static void chat() throws IOException {
         System.out.println("Input your message:");
         //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
-        BufferedWriter out =new BufferedWriter(new OutputStreamWriter( fromclient.getOutputStream()));
+        OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
         String reader = "server";
         out.write(reader);
-        BufferedReader in = new BufferedReader (new InputStreamReader(fromclient.getInputStream()));
-        String msg=in.readLine();
+        out.flush();
+        BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+        String msg = in.readLine();
         System.out.println(msg);
     }
+
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Server side");
         createServerConnection();
-        while (true){
+        while (true) {
             chat();
         }
 

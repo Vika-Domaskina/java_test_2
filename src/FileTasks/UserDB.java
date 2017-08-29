@@ -143,6 +143,7 @@ public class UserDB {
         fileIO.writeFile(dictionaryUsers);
     }
 
+
     public static void deleteStatement() throws IOException {
         System.out.println("For delete statement you should input existing user ID:");
         int id=checkValidationID();
@@ -152,8 +153,7 @@ public class UserDB {
                 dictionaryUsers.remove(id);
             }
         fileIO.writeFile(dictionaryUsers);
-    }
-
+}
     public static void showControl() throws IOException {
         System.out.println("Hi, what do you want to do with our database?" + "\n" +
                 "If you input 0 -> you want to do select statement" + "\n" +

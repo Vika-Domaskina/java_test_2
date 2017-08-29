@@ -42,15 +42,15 @@ public class Server {
     }
 
     public static void chat() throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+        String msg = in.readLine();
+        System.out.println(msg);
         System.out.println("Input your message:");
         //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
         OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
         String reader = "server";
         out.write(reader);
         out.flush();
-        BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
-        String msg = in.readLine();
-        System.out.println(msg);
     }
 
     public static void main(String[] args) throws IOException {

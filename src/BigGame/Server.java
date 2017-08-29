@@ -48,7 +48,7 @@ public class Server {
         System.out.println("Input your message:");
         //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
         OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
-        String reader = "server";
+        String reader = "server\n";
         out.write(reader);
         out.flush();
     }

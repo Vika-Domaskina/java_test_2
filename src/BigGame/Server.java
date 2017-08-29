@@ -3,7 +3,7 @@ package BigGame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -11,12 +11,14 @@ import java.net.Socket;
  * Created by Viktoriya.D on 8/22/2017.
  */
 public class Server {
-    public static void main(String[] args) throws IOException {
-        System.out.println("Welcome to Server side");
-        BufferedReader in;
-        PrintWriter out;
-        Socket fromclient;
-        ServerSocket socket = null; //Notice no user to connect to this time.
+    public static Socket fromclient = null;
+    public static ServerSocket socket = null;
+    public static InputStreamReader in;
+    public static OutputStreamWriter out;
+    public static InputStreamReader inu;
+    public static int readByte;
+
+    public static void createServerConnection() {
         try {
             socket = new ServerSocket(4444);
         } catch (IOException e) {
@@ -40,9 +42,29 @@ public class Server {
             System.out.println("Can't accept");
             System.exit(-1);
         }
+    }
 
-        in = new BufferedReader(new InputStreamReader(fromclient.getInputStream())); //Read data from a stream
-        out = new PrintWriter(fromclient.getOutputStream(), true);//Write data from a stream
+    public static void chat() throws IOException {
+        System.out.println("Input your message:");
+        inu = new InputStreamReader(System.in);
+        out = new OutputStreamWriter(fromclient.getOutputStream());
+        int i;
+        while ((i = inu.read()) != -1) {
+            out.write(i);
+        }
+        in = new InputStreamReader(fromclient.getInputStream());
+        while ((readByte = in.read()) != -1) {
+            System.out.println(readByte);
+        }
+    }
+    public static void main(String[] args) throws IOException {
+        System.out.println("Welcome to Server side");
+        createServerConnection();
+        while (true){
+            chat();
+        }
+
+
     }
 
 }

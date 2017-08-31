@@ -20,9 +20,9 @@ public class Client {
 
     public static void chat() throws IOException {
         System.out.println("Input your message:");
-        //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
+        BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
         OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream());
-        String reader = "client\n";
+        String reader = inu.readLine()+"\n";
         out.write(reader);
         out.flush();
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));

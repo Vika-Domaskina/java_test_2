@@ -22,7 +22,7 @@ public class Client {
         System.out.println("Input your message:");
         //BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
         OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream());
-        String reader = "client";
+        String reader = "client\n";
         out.write(reader);
         out.flush();
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));

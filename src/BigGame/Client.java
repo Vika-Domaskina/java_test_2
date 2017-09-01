@@ -11,7 +11,6 @@ public class Client {
     public static Socket clientSocket;
     public static OutputStream out;
 
-    public static int readByte;
 
     public static void createClientConnection() throws IOException {
         System.out.println("Client connecting to server");

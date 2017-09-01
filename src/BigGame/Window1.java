@@ -32,14 +32,16 @@ public class Window1 {
     BufferedWriter fromClientToServer = null;
     BufferedReader toClientFromServer = null;
 
-    Battlefield bg = null;
+    Window2 bg = null;
 
     public Window1() {
-        serverButton = new JButton("I want to be a server!");
-        IPButton = new JButton("Connect!");
-        clientButton = new JButton("I want to be a client!");
+        frame = new JFrame("My Game");
+        frame.setPreferredSize(new Dimension(1600, 1300));
+        frame.setContentPane(this.mainPanel);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
         IPField.setColumns(24);
-        IPButton = new JButton("Connect!");
 
         clientButton.addActionListener(new ActionListener() {
             /**
@@ -65,10 +67,11 @@ public class Window1 {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                chooseYourTypeTextField.setText("Selected!");
-                InetAddress thisIp = null;
+                serverButton.setText("You choose server!");
+                String thisIp = null;
                 try {
-                    thisIp = InetAddress.getLocalHost();
+                    thisIp = InetAddress.getLocalHost().getHostAddress();
+                    JOptionPane.showMessageDialog(null, "My IP is " + thisIp);
                 } catch (UnknownHostException ex) {
                     JOptionPane.showMessageDialog(null, "Fatal error! Can't get IP!", "Sorry, fatal error!", 1);
                     System.exit(1);
@@ -82,7 +85,6 @@ public class Window1 {
 
                 clientButton.setVisible(false);
                 serverButton.setVisible(false);
-                /*mainPanel.setVisible(false);*/
             }
         });
         IPButton.addActionListener(new ActionListener() {
@@ -94,13 +96,12 @@ public class Window1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 InetAddress ia = null;
-
                 try {
 
                     remoteClientSocket = new Socket(ia = InetAddress.getByName(IPField.getText()), 1234);
                     fromClientToServer = new BufferedWriter(new OutputStreamWriter(remoteClientSocket.getOutputStream()));
                     toClientFromServer = new BufferedReader(new InputStreamReader(remoteClientSocket.getInputStream()));
-                    bg = new Battlefield();
+                    bg = new Window2();
                 } catch (UnknownHostException uhe) {
                     System.err.println("Don't know about host: " + ia.getHostAddress());
                     System.exit(1);
@@ -108,8 +109,8 @@ public class Window1 {
                     System.err.println("Couldn't get I/O for the connection to: " + ia.getHostAddress());
                     System.exit(1);
                 }
-                try {
 
+                try {
                     clientSocket = serverSocket.accept();
                     fromServerToClient = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
                     toServerFromClient = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -139,10 +140,7 @@ public class Window1 {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("My Game");
-        frame.setContentPane(new Window1().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        new Window1();
+
     }
 }

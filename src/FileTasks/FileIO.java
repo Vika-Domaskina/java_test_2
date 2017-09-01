@@ -19,7 +19,7 @@ public class FileIO {
 
     static String[] masivUsers;
 
-    static public String[] readFile() throws IOException {
+    static public String[] readFile()  {
         String file = "";
         try (FileInputStream fileInputStream = new FileInputStream(fileDB)) {
             int i;
@@ -34,8 +34,8 @@ public class FileIO {
         return masivUsers;
     }
 
-    static public void writeFile(HashMap dictionary) throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(fileDB, false);
+    static public void writeFile(HashMap dictionary){
+        try ( FileOutputStream fileOutputStream = new FileOutputStream(fileDB, false)){
         System.out.println("write array!!");
         Set<Map.Entry<Integer, User>> set = dictionary.entrySet();  //Returns a Set view of the mappings contained in this map.
         for (Map.Entry<Integer, User> me : set) {
@@ -47,6 +47,9 @@ public class FileIO {
             }
         }
         System.out.println();
+        } catch(IOException e){
+            System.out.println("Can't open file.Please try again");
+        }
     }
 
     public static void main(String[] args) throws IOException {

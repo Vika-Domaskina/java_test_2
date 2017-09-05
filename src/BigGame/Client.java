@@ -12,9 +12,14 @@ public class Client {
     public static OutputStream out;
 
 
-    public static void createClientConnection() throws IOException {
+    public static void createClientConnection(String server) {
         System.out.println("Client connecting to server");
-        clientSocket = new Socket("localhost", 4444);
+        try {
+            clientSocket = new Socket(server, 4444);
+        } catch (IOException e) {
+            e.printStackTrace() ;
+            System.out.println("Can't connect to server!");
+        }
     }
 
     public static void chat() throws IOException {
@@ -29,11 +34,15 @@ public class Client {
         System.out.println(msg);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         System.out.println("Welcome to client side");
-        createClientConnection();
+        createClientConnection("localhost");
         while (true) {
-            chat();
+            try {
+                chat();
+            } catch (IOException e) {
+                System.out.println("Connection failed!");
+            }
         }
     }
 }

@@ -6,33 +6,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * Created by Viktoriya.D on 7/28/2017.
  */
-public class Window1 {
+public class LaunchForm {
     private JButton clientButton;
     private JButton serverButton;
     private JTextField chooseYourTypeTextField;
     private JPanel mainPanel;
     private JTextField IPField;
     private JButton connectButton;
-    private JFrame frame;
+    private JFrame frame2;
 
 
-    Window2 bg = null;
+
     boolean isServer;
 
-    public Window1() {
-        frame = new JFrame("My Game");
-        frame.setPreferredSize(new Dimension(1600, 1300));
-        frame.setContentPane(this.mainPanel);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    public LaunchForm() {
+        frame2 = new JFrame("My Game");
+        frame2.setPreferredSize(new Dimension(1600, 1300));
+        frame2.setContentPane(this.mainPanel);
+        frame2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame2.pack();
+        frame2.setVisible(true);
         IPField.setColumns(24);
 
         clientButton.addActionListener(new ActionListener() {
@@ -44,8 +41,7 @@ public class Window1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 chooseYourTypeTextField.setText("Selected client!");
-                JOptionPane.showMessageDialog(frame, "Please input in text box IP server for connecting");
-                isServer=false;
+                isServer = false;
                 serverButton.setEnabled(true);
             }
         });
@@ -60,7 +56,7 @@ public class Window1 {
             public void actionPerformed(ActionEvent e) {
                 chooseYourTypeTextField.setText("Selected server!");
                 clientButton.setEnabled(true);
-                isServer=true;
+                isServer = true;
 
             }
         });
@@ -72,15 +68,19 @@ public class Window1 {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!isServer && !IPField.getText().equals("")){
-                        Client.createClientConnection(IPField.getText());
-                    while (true) {
-                        Client.chat();
+                if (!isServer && !IPField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(frame2, Client.createClientConnection(IPField.getText()));
+                    if (!Client.connect) {
+                        serverButton.setEnabled(true);
+                        clientButton.setEnabled(true);
+                    } else {
+                        Client.makeGameForClient();
                     }
-                } else if(isServer){
+                } else if (isServer) {
                     Server.createServerConnection();
+                    Server.makeGameForServer();
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Could you please input IP server in text box!!!");
+                    JOptionPane.showMessageDialog(frame2, "Could you please input IP server in text box!!!");
                 }
             }
         });
@@ -93,13 +93,16 @@ public class Window1 {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                if (IPField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(frame2, "Please input in text box server address for connecting");
+                }
                 serverButton.setEnabled(true);
             }
         });
     }
 
     public static void main(String[] args) {
-        new Window1();
+        new LaunchForm();
 
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Viktoriya.D on 7/31/2017.
  */
-public class Window2 {
+public class GameWindow {
 
     class FieldCellActionListener implements ActionListener {
         int xPosit;
@@ -61,7 +61,7 @@ public class Window2 {
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
 
-    public Window2() {
+    public GameWindow() {
         frame = new JFrame("My Game");
         frame.setPreferredSize(new Dimension(1600, 1300));
         msg_area.setWrapStyleWord(true);
@@ -96,6 +96,7 @@ public class Window2 {
                 counterPlayer = 0;
                 resetGame();
                 battlefield.resetField();
+                /*lockBatlefield();*/
             }
         });
 
@@ -175,8 +176,35 @@ public class Window2 {
         buttonArrayList.add(button9);
     }
 
+    public void lockBatlefield(){
+        JOptionPane.showMessageDialog(frame, "Your opponent doing stroke!!!");
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+        button5.setEnabled(false);
+        button6.setEnabled(false);
+        button7.setEnabled(false);
+        button8.setEnabled(false);
+        button9.setEnabled(false);
+        sendButton.setEnabled(false);
+    }
+
+    public void unlockBatlefield(){
+        JOptionPane.showMessageDialog(frame, "Your stroke!!!");
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
+        sendButton.setEnabled(true);
+    }
     public static void main(String[] args) {
-        new Window2();
+        new GameWindow();
 
     }
 }

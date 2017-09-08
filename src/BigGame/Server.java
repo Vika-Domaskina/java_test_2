@@ -13,7 +13,7 @@ import java.net.Socket;
 public class Server {
     private static Socket fromclient;
     private static ServerSocket socket;
-    public static int readByte;
+    static GameWindow bg = null;
 
     public static void createServerConnection() {
         try {
@@ -40,20 +40,30 @@ public class Server {
             System.exit(-1);
         }
     }
-
-    public static void chat() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
-        String msg = in.readLine();
-        System.out.println(msg);
-        System.out.println("Input your message:");
-        BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
-        OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
-        String reader = inu.readLine()+"\n";
-        out.write(reader);
-        out.flush();
+    public static void makeGameForServer() {
+            bg = new GameWindow();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void chat(){
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+            String msg = in.readLine();
+            System.out.println(msg);
+            System.out.println("Input your message:");
+            BufferedReader inu = new BufferedReader (new InputStreamReader(System.in));
+            OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
+            String reader = inu.readLine()+"\n";
+            out.write(reader);
+            out.flush();
+        } catch (IOException e) {
+            System.err.println("Couldn't get I/O for the connection to client " );  //+ ia.getHostAddress()
+            System.exit(1);
+        }
+
+    }
+
+    /*public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Server side");
         createServerConnection();
         while (true) {
@@ -61,6 +71,6 @@ public class Server {
         }
 
 
-    }
+    }*/
 
 }

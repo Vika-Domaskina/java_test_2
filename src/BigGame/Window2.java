@@ -58,7 +58,7 @@ public class Window2 {
     int typePlayer;
     JFrame frame;
     ImageIcon imageTypePlayer;
-    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
+    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\BigGame.images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
 
     public Window2() {
@@ -154,10 +154,10 @@ public class Window2 {
     public int getTypePlayer() {
         if (counterPlayer % 2 == 0) {
             typePlayer = 1;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
+            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\BigGame.images\\krestik.png", "Krestik");
         } else {
             typePlayer = 2;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
+            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\BigGame.images\\olik.png", "Nolik");
         }
         counterPlayer++;
         return typePlayer;

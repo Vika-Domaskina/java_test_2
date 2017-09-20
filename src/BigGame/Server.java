@@ -52,7 +52,7 @@ public class Server implements NetworkIO {
     }
 
     public void makeGameForServer() {
-        bg = new GameWindow(this,false);
+        bg = new GameWindow(this,false,"Server");
         JOptionPane.showMessageDialog(new Frame(), "Your opponent stroke first!");
         //bg.frame.enable(false);
         this.readStroke();
@@ -83,8 +83,9 @@ public class Server implements NetworkIO {
             System.out.println(msg);
             masivStrokes = msg.split(";");
 
-            makeClick(masivStrokes[0], masivStrokes[1]);
+
             bg.unlockBatlefield();
+            makeClick(masivStrokes[0], masivStrokes[1]);
             System.out.println("Stop read server");
         } catch (IOException e) {
             System.err.println("Couldn't get I/O for the connection to client ");  //+ ia.getHostAddress()
@@ -93,27 +94,11 @@ public class Server implements NetworkIO {
     }
 
     private void makeClick(String x, String y) {
-        if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 0) {
-            bg.button1.addActionListener(bg.new FieldCellActionListener(0, 0));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 0) {
-            bg.button2.addActionListener(bg.new FieldCellActionListener(1, 0));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 0) {
-            bg.button3.addActionListener(bg.new FieldCellActionListener(2, 0));
-        } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 1) {
-            bg.button4.addActionListener(bg.new FieldCellActionListener(0, 1));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 1) {
-            bg.button5.addActionListener(bg.new FieldCellActionListener(1, 1));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 1) {
-            bg.button6.addActionListener(bg.new FieldCellActionListener(2, 1));
-        } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 2) {
-            bg.button7.addActionListener(bg.new FieldCellActionListener(0, 2));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 2) {
-            bg.button8.addActionListener(bg.new FieldCellActionListener(1, 2));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 2) {
-            bg.button9.addActionListener(bg.new FieldCellActionListener(2, 2));
-        }
-
-
+        int xn = Integer.parseInt(x);
+        int yn = Integer.parseInt(y);
+        bg.field[xn][yn].setIcon(bg.imageOpponent);
+        bg.doOpponentStroke(xn,yn);
+        bg.field[xn][yn].setEnabled(false);
     }
 
     @Override

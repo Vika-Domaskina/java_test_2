@@ -31,13 +31,15 @@ public class GameWindow {
     JTextField msg_field;
     JButton sendButton;
     static ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
-    static int counterPlayer = 0;
-    static int typePlayer;
-    static int opponent;
+    public JButton[][] field = new JButton[3][3];
+    int counterPlayer = 0;
+    int typePlayer = 0;
+    int opponent = 0;
     static JFrame frame;
     static ImageIcon imageTypePlayer;
-    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
-    static Battlefield battlefield = new Battlefield();
+    ImageIcon defaultIcon = new ImageIcon(this.getClass().getResource("images\\krNol.png").getPath(), "Krestiki/Noliki");
+    Battlefield battlefield = new Battlefield();
+    public ImageIcon imageOpponent;
 
     class FieldCellActionListener implements ActionListener {
         int xPosit;
@@ -53,7 +55,6 @@ public class GameWindow {
         public void actionPerformed(ActionEvent e) {
             JButton button = ((JButton) e.getSource());
             System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
-            int typePlayer = getTypePlayer();
             button.setIcon(imageTypePlayer);
             if (battlefield.doStroke(xPosit, yPosit, typePlayer, frame)) {
                 for (int i = 0; i < 9; i++) {
@@ -62,27 +63,17 @@ public class GameWindow {
             }
             button.setEnabled(false);
             button.setText("");
-//            if (typePlayer == 1) {
-//                nio.writeStroke(sendInformationAboutStroke());
-//                nio.readStroke();
-//                try {
-//                    Thread.sleep(2000);
-//                } catch (InterruptedException e1) {
-//                    e1.printStackTrace();
-//                }
-//                nio.writeStroke(sendInformationAboutStroke());
-//                nio.readStroke();
-//            } else {
-//                nio.writeStroke(sendInformationAboutStroke());
-//                nio.readStroke();
-//            }
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e1) {
-//                e1.printStackTrace();
-//            }
+            button.setIcon(imageTypePlayer);
             nio.writeStroke(sendInformationAboutStroke());
-            nio.readStroke();
+
+            SwingWorker worker = new SwingWorker<String, Void>() {
+                @Override
+                public String doInBackground() {
+                    nio.readStroke();
+                    return "Opponents turn done";
+                }
+            };
+            worker.execute();
 
         }
 
@@ -93,19 +84,20 @@ public class GameWindow {
     }
 
 
-    GameWindow(NetworkIO nio,boolean first){
-        this(first);
+    GameWindow(NetworkIO nio,boolean first,String windowName){
+        this(first,windowName);
         this.nio = nio;
     }
 
 
-    public GameWindow(Boolean firstMove) {
-        frame = new JFrame("My Game");
+    public GameWindow(Boolean firstMove,String windowName) {
+        frame = new JFrame(windowName);
         frame.setPreferredSize(new Dimension(1600, 1300));
         msg_area.setWrapStyleWord(true);
         msg_area.setLineWrap(true);
         this.initArrayButtons();
         this.resetGame();
+        this.initTypePlayer(firstMove);
         //mainPanel.add(dialogPanel);
         frame.setContentPane(this.mainPanel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -191,15 +183,17 @@ public class GameWindow {
         }
     }
 
-    public static int getTypePlayer() {
-        if (counterPlayer % 2 == 0) {
+    public int initTypePlayer(boolean first) {
+        if (first) {
             typePlayer = 1;
             opponent = 2;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
+            imageTypePlayer = new ImageIcon(this.getClass().getResource("images\\krestik.png"), "Krestik");
+            imageOpponent = new ImageIcon(this.getClass().getResource("images\\olik.png"), "Nolik");
         } else {
             typePlayer = 2;
             opponent = 1;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
+            imageTypePlayer = new ImageIcon(this.getClass().getResource("images\\olik.png"), "Nolik");
+            imageOpponent = new ImageIcon(this.getClass().getResource("images\\krestik.png"), "Krestik");
         }
         counterPlayer++;
         return typePlayer;
@@ -215,6 +209,18 @@ public class GameWindow {
         buttonArrayList.add(button7);
         buttonArrayList.add(button8);
         buttonArrayList.add(button9);
+
+        field[0][0] = button1;
+        field[1][0] = button2;
+        field[2][0] = button3;
+        field[0][1] = button4;
+        field[1][1] = button5;
+        field[2][1] = button6;
+        field[0][2] = button7;
+        field[1][2] = button8;
+        field[2][2] = button9;
+
+
     }
 
     public void lockBatlefield(int myStroke) {
@@ -224,20 +230,13 @@ public class GameWindow {
     }
 
     public void unlockBatlefield() {
-        /*JOptionPane.showMessageDialog(frame, "Your stroke!!!");*/
         frame.enable(true);
     }
 
+    void doOpponentStroke(int x, int y){
+        battlefield.doStroke(x,y,opponent,frame);
+    }
 
-    /*public static void main(String[] args) {
-        new GameWindow();
-        lockBatlefield(2);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
-        unlockBatlefield();*/
 }
 
 

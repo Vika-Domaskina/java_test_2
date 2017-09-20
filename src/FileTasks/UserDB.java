@@ -1,7 +1,6 @@
 package FileTasks;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +22,7 @@ public class UserDB {
         return dictionaryUsers;
     }
 
-    public static String chooseStatement() throws IOException {
+    public static String chooseStatement() {
         System.out.println("Choose statement: ");
         statementNumber = consoleReader.readConsole();
         while (true) {
@@ -79,7 +78,7 @@ public class UserDB {
         return statementNumber;
     }
 
-    public static void selectStatement() throws IOException {
+    public static void selectStatement() {
         System.out.println("If you want to select some user you should input ID. If you want to select all users you should press 'Enter'." + "\n" + " So your choose! ");
         statementNumber = consoleReader.readConsole();
         if (statementNumber.equals("")) {
@@ -89,18 +88,18 @@ public class UserDB {
                 System.out.println(me.getValue());
             }
         } else {
-                if (dictionaryUsers.containsKey(Integer.parseInt(statementNumber))) {
-                    System.out.println(dictionaryUsers.get(Integer.parseInt(statementNumber)));
-                }
+            if (dictionaryUsers.containsKey(Integer.parseInt(statementNumber))) {
+                System.out.println(dictionaryUsers.get(Integer.parseInt(statementNumber)));
+            }
         }
     }
 
-    public static void insertStatement() throws IOException {
+    public static void insertStatement() {
         System.out.println("For insert statement you should input 3 field: ID, Name, Phone");
-        int id=checkValidationID();
-        String name= checkValidationName();
-        String phone=checkValidationPhone();
-        dictionaryUsers.put(id, new User(id,name,phone));
+        int id = checkValidationID();
+        String name = checkValidationName();
+        String phone = checkValidationPhone();
+        dictionaryUsers.put(id, new User(id, name, phone));
         /*Set<Map.Entry<Integer, User>> set = dictionaryUsers.entrySet();  //Returns a Set view of the mappings contained in this map.
         for (Map.Entry<Integer, User> me : set) {
             System.out.print(me.getKey() + " : ");
@@ -109,33 +108,33 @@ public class UserDB {
         fileIO.writeFile(dictionaryUsers);
     }
 
-    public static void updateStatement() throws IOException {
+    public static void updateStatement() {
         System.out.println("For update statement you should input existing user ID:");
-        int id=checkValidationID();
+        int id = checkValidationID();
         User updateUser;
-        if (dictionaryUsers.containsKey(id)){
-            updateUser= dictionaryUsers.get(id);
+        if (dictionaryUsers.containsKey(id)) {
+            updateUser = dictionaryUsers.get(id);
         } else {
             System.out.println("User not found!");
             return;
         }
 
-        System.out.println("What field you want update?"+ "\n" +
-                "If you input 1 -> you want update name for user"+ "\n" +
+        System.out.println("What field you want update?" + "\n" +
+                "If you input 1 -> you want update name for user" + "\n" +
                 "If you input 2 -> you want update phone for user");
         System.out.println("Choose statement: ");
         statementNumber = consoleReader.readConsole();
-        while(true){
-            if (Integer.parseInt(statementNumber)==1){
+        while (true) {
+            if (Integer.parseInt(statementNumber) == 1) {
                 System.out.println("You choose name field");
-                updateUser.userName= checkValidationName();
+                updateUser.userName = checkValidationName();
                 /*dictionaryUsers.get(Integer.parseInt(statementNumber))*/
                 break;
-            } else if (Integer.parseInt(statementNumber)==2){
+            } else if (Integer.parseInt(statementNumber) == 2) {
                 System.out.println("You choose phone field");
-                updateUser.userPhone=checkValidationPhone();
+                updateUser.userPhone = checkValidationPhone();
                 break;
-            }else {
+            } else {
                 System.out.println("Choose right number!");
                 statementNumber = consoleReader.readConsole();
             }
@@ -144,17 +143,18 @@ public class UserDB {
     }
 
 
-    public static void deleteStatement() throws IOException {
+    public static void deleteStatement() {
         System.out.println("For delete statement you should input existing user ID:");
-        int id=checkValidationID();
-            if (dictionaryUsers.containsKey(id)) {
-                System.out.println("Now deleting this user:");
-                System.out.println(dictionaryUsers.get(id));
-                dictionaryUsers.remove(id);
-            }
+        int id = checkValidationID();
+        if (dictionaryUsers.containsKey(id)) {
+            System.out.println("Now deleting this user:");
+            System.out.println(dictionaryUsers.get(id));
+            dictionaryUsers.remove(id);
+        }
         fileIO.writeFile(dictionaryUsers);
-}
-    public static void showControl() throws IOException {
+    }
+
+    public static void showControl() {
         System.out.println("Hi, what do you want to do with our database?" + "\n" +
                 "If you input 0 -> you want to do select statement" + "\n" +
                 "If you input 1 -> you want to do insert statement" + "\n" +
@@ -162,10 +162,11 @@ public class UserDB {
                 "If you input 3 -> you want to do delete statement");
         chooseStatement();
     }
+
     public static void main(String[] args) throws IOException {
         createDictionaryUsers();
-        while(true)
-        showControl();
+        while (true)
+            showControl();
 
         //selectStatement();
     }

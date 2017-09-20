@@ -14,13 +14,16 @@ import java.net.Socket;
 /**
  * Created by Viktoriya.D on 8/22/2017.
  */
-public class Server {
-    private static Socket fromclient;
-    private static ServerSocket socket;
+public class Server implements NetworkIO {
+    private Socket fromclient;
+    private ServerSocket socket;
     static GameWindow bg = null;
     static String[] masivStrokes;
 
-    public static void createServerConnection() {
+    OutputStreamWriter out = null;
+    BufferedReader in = null;
+
+    public void createServerConnection() {
         try {
             socket = new ServerSocket(4444);
         } catch (IOException e) {
@@ -38,6 +41,8 @@ public class Server {
         try {
             System.out.println("Waiting for a client...");
             fromclient = socket.accept();
+            out = new OutputStreamWriter(fromclient.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
             System.out.println("Client connected");
         } catch (IOException e) {
             fromclient = null;
@@ -46,16 +51,17 @@ public class Server {
         }
     }
 
-    public static void makeGameForServer() {
-        bg = new GameWindow();
+    public void makeGameForServer() {
+        bg = new GameWindow(this,false);
         JOptionPane.showMessageDialog(new Frame(), "Your opponent stroke first!");
-        bg.frame.enable(false);
+        //bg.frame.enable(false);
+        this.readStroke();
     }
 
-    public static void writeInformationAboutStroke(String information) {
+    public void writeInformationAboutStroke(String information) {
         try {
             System.out.println("Start write server");
-            OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
+
             out.write(information);
             out.flush();
             System.out.println("Stop write server");
@@ -66,15 +72,17 @@ public class Server {
 
     }
 
-    public static void readeInformationAboutStroke() {
+    public void readeInformationAboutStroke() {
         try {
             System.out.println("Start read server");
             System.out.println(fromclient);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+
+            bg.lockBatlefield(bg.opponent);
+
             String msg = in.readLine();
             System.out.println(msg);
             masivStrokes = msg.split(";");
-            bg.lockBatlefield(bg.opponent);
+
             makeClick(masivStrokes[0], masivStrokes[1]);
             bg.unlockBatlefield();
             System.out.println("Stop read server");
@@ -84,28 +92,39 @@ public class Server {
         }
     }
 
-    private static void makeClick(String x, String y) {
+    private void makeClick(String x, String y) {
         if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 0) {
-            bg.button1.addActionListener(new BigGame.GameWindow.FieldCellActionListener(0, 0));
+            bg.button1.addActionListener(bg.new FieldCellActionListener(0, 0));
         } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 0) {
-            bg.button2.addActionListener(new FieldCellActionListener(1, 0));
+            bg.button2.addActionListener(bg.new FieldCellActionListener(1, 0));
         } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 0) {
-            bg.button3.addActionListener(new FieldCellActionListener(2, 0));
+            bg.button3.addActionListener(bg.new FieldCellActionListener(2, 0));
         } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 1) {
-            bg.button4.addActionListener(new FieldCellActionListener(0, 1));
+            bg.button4.addActionListener(bg.new FieldCellActionListener(0, 1));
         } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 1) {
-            bg.button5.addActionListener(new FieldCellActionListener(1, 1));
+            bg.button5.addActionListener(bg.new FieldCellActionListener(1, 1));
         } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 1) {
-            bg.button6.addActionListener(new FieldCellActionListener(2, 1));
+            bg.button6.addActionListener(bg.new FieldCellActionListener(2, 1));
         } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 2) {
-            bg.button7.addActionListener(new FieldCellActionListener(0, 2));
+            bg.button7.addActionListener(bg.new FieldCellActionListener(0, 2));
         } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 2) {
-            bg.button8.addActionListener(new FieldCellActionListener(1, 2));
+            bg.button8.addActionListener(bg.new FieldCellActionListener(1, 2));
         } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 2) {
-            bg.button9.addActionListener(new FieldCellActionListener(2, 2));
+            bg.button9.addActionListener(bg.new FieldCellActionListener(2, 2));
         }
 
 
+    }
+
+    @Override
+    public String readStroke() {
+        this.readeInformationAboutStroke();
+        return "ok=(";
+    }
+
+    @Override
+    public void writeStroke(String stroke) {
+        this.writeInformationAboutStroke(stroke);
     }
 
 

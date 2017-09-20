@@ -13,57 +13,8 @@ import java.util.ArrayList;
  */
 public class GameWindow {
 
-    static class FieldCellActionListener implements ActionListener {
-        int xPosit;
-        int yPosit;
 
-        public FieldCellActionListener(int XcordinatePositionButton, int YcordinatePositionButton) {
-            //super();
-            this.xPosit = XcordinatePositionButton;
-            this.yPosit = YcordinatePositionButton;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton button = ((JButton) e.getSource());
-            System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
-            int typePlayer = getTypePlayer();
-            button.setIcon(imageTypePlayer);
-            if (battlefield.doStroke(xPosit, yPosit, typePlayer, frame)) {
-                for (int i = 0; i < 9; i++) {
-                    buttonArrayList.get(i).setEnabled(false);
-                }
-            }
-            button.setEnabled(false);
-            button.setText("");
-            if (typePlayer == 1) {
-                Client.writeInformationAboutStroke(sendInformationAboutStroke());
-                Server.readeInformationAboutStroke();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-                Server.writeInformationAboutStroke(sendInformationAboutStroke());
-                Client.readeInformationAboutStroke();
-            } else {
-                Server.writeInformationAboutStroke(sendInformationAboutStroke());
-                Client.readeInformationAboutStroke();
-            }
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-            Server.readeInformationAboutStroke();
-            Client.writeInformationAboutStroke(sendInformationAboutStroke());
-        }
-
-        public String sendInformationAboutStroke() {
-            return xPosit + ";" + yPosit + "\n";
-        }
-
-    }
+    NetworkIO nio = null;
 
     JButton button1;
     JButton button2;
@@ -88,7 +39,67 @@ public class GameWindow {
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
 
-    public GameWindow() {
+    class FieldCellActionListener implements ActionListener {
+        int xPosit;
+        int yPosit;
+
+        public FieldCellActionListener(int XcordinatePositionButton, int YcordinatePositionButton) {
+            //super();
+            this.xPosit = XcordinatePositionButton;
+            this.yPosit = YcordinatePositionButton;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton button = ((JButton) e.getSource());
+            System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
+            int typePlayer = getTypePlayer();
+            button.setIcon(imageTypePlayer);
+            if (battlefield.doStroke(xPosit, yPosit, typePlayer, frame)) {
+                for (int i = 0; i < 9; i++) {
+                    buttonArrayList.get(i).setEnabled(false);
+                }
+            }
+            button.setEnabled(false);
+            button.setText("");
+//            if (typePlayer == 1) {
+//                nio.writeStroke(sendInformationAboutStroke());
+//                nio.readStroke();
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e1) {
+//                    e1.printStackTrace();
+//                }
+//                nio.writeStroke(sendInformationAboutStroke());
+//                nio.readStroke();
+//            } else {
+//                nio.writeStroke(sendInformationAboutStroke());
+//                nio.readStroke();
+//            }
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
+            nio.writeStroke(sendInformationAboutStroke());
+            nio.readStroke();
+
+        }
+
+        public String sendInformationAboutStroke() {
+            return xPosit + ";" + yPosit +";\n";
+        }
+
+    }
+
+
+    GameWindow(NetworkIO nio,boolean first){
+        this(first);
+        this.nio = nio;
+    }
+
+
+    public GameWindow(Boolean firstMove) {
         frame = new JFrame("My Game");
         frame.setPreferredSize(new Dimension(1600, 1300));
         msg_area.setWrapStyleWord(true);
@@ -168,6 +179,8 @@ public class GameWindow {
                 }
             }
         });
+
+        //if (!firstMove) nio.readStroke();
     }
 
 

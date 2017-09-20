@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GameWindow {
 
-    class FieldCellActionListener implements ActionListener {
+    static class FieldCellActionListener implements ActionListener {
         int xPosit;
         int yPosit;
 
@@ -36,28 +36,55 @@ public class GameWindow {
             }
             button.setEnabled(false);
             button.setText("");
+            if (typePlayer == 1) {
+                Client.writeInformationAboutStroke(sendInformationAboutStroke());
+                Server.readeInformationAboutStroke();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                Server.writeInformationAboutStroke(sendInformationAboutStroke());
+                Client.readeInformationAboutStroke();
+            } else {
+                Server.writeInformationAboutStroke(sendInformationAboutStroke());
+                Client.readeInformationAboutStroke();
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+            Server.readeInformationAboutStroke();
+            Client.writeInformationAboutStroke(sendInformationAboutStroke());
         }
+
+        public String sendInformationAboutStroke() {
+            return xPosit + ";" + yPosit + "\n";
+        }
+
     }
 
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
-    private JButton button7;
-    private JButton button8;
-    private JButton button9;
+    JButton button1;
+    JButton button2;
+    JButton button3;
+    JButton button4;
+    JButton button5;
+    JButton button6;
+    JButton button7;
+    JButton button8;
+    JButton button9;
     JPanel mainPanel;
-    private JButton newGameButton;
-    private JTextArea msg_area;
-    private JTextField msg_field;
-    private JButton sendButton;
-    private ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
-    int counterPlayer = 0;
-    int typePlayer;
-    JFrame frame;
-    ImageIcon imageTypePlayer;
+    JButton newGameButton;
+    JTextArea msg_area;
+    JTextField msg_field;
+    JButton sendButton;
+    static ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
+    static int counterPlayer = 0;
+    static int typePlayer;
+    static int opponent;
+    static JFrame frame;
+    static ImageIcon imageTypePlayer;
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
     static Battlefield battlefield = new Battlefield();
 
@@ -96,7 +123,6 @@ public class GameWindow {
                 counterPlayer = 0;
                 resetGame();
                 battlefield.resetField();
-                /*lockBatlefield();*/
             }
         });
 
@@ -134,7 +160,7 @@ public class GameWindow {
              */
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_ENTER){
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     msg_area.append(msg_field.getText() + "\n");
                     System.out.println(msg_field.getText());
                     msg_field.setText("");
@@ -152,12 +178,14 @@ public class GameWindow {
         }
     }
 
-    public int getTypePlayer() {
+    public static int getTypePlayer() {
         if (counterPlayer % 2 == 0) {
             typePlayer = 1;
+            opponent = 2;
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
         } else {
             typePlayer = 2;
+            opponent = 1;
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
         }
         counterPlayer++;
@@ -176,36 +204,27 @@ public class GameWindow {
         buttonArrayList.add(button9);
     }
 
-    public void lockBatlefield(){
-        JOptionPane.showMessageDialog(frame, "Your opponent doing stroke!!!");
-        button1.setEnabled(false);
-        button2.setEnabled(false);
-        button3.setEnabled(false);
-        button4.setEnabled(false);
-        button5.setEnabled(false);
-        button6.setEnabled(false);
-        button7.setEnabled(false);
-        button8.setEnabled(false);
-        button9.setEnabled(false);
-        sendButton.setEnabled(false);
+    public void lockBatlefield(int myStroke) {
+        if (typePlayer != myStroke) {
+            frame.enable(false);
+        }
     }
 
-    public void unlockBatlefield(){
-        JOptionPane.showMessageDialog(frame, "Your stroke!!!");
-        button1.setEnabled(true);
-        button2.setEnabled(true);
-        button3.setEnabled(true);
-        button4.setEnabled(true);
-        button5.setEnabled(true);
-        button6.setEnabled(true);
-        button7.setEnabled(true);
-        button8.setEnabled(true);
-        button9.setEnabled(true);
-        sendButton.setEnabled(true);
+    public void unlockBatlefield() {
+        /*JOptionPane.showMessageDialog(frame, "Your stroke!!!");*/
+        frame.enable(true);
     }
-    public static void main(String[] args) {
+
+
+    /*public static void main(String[] args) {
         new GameWindow();
-
-    }
+        lockBatlefield(2);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e1) {
+            e1.printStackTrace();
+        }
+        unlockBatlefield();*/
 }
+
 

@@ -19,6 +19,7 @@ public class Client implements NetworkIO {
     BufferedReader inR = null;
 
     public String createClientConnection(String server) {
+
         System.out.println("Client connecting to server");
         try {
             clientSocket = new Socket(server, 4444);
@@ -36,7 +37,7 @@ public class Client implements NetworkIO {
             return "Can't connect to server " + server + "!Please try again";
         }
     }
-
+  
     public void makeGameForClient() {
         if (connect) {
             bg = new GameWindow(this,true,"Client");

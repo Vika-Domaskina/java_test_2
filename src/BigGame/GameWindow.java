@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class GameWindow {
 
-
     NetworkIO nio = null;
 
     JButton button1;
@@ -82,8 +81,6 @@ public class GameWindow {
         }
 
     }
-
-
     GameWindow(NetworkIO nio,boolean first,String windowName){
         this(first,windowName);
         this.nio = nio;
@@ -171,8 +168,6 @@ public class GameWindow {
                 }
             }
         });
-
-        //if (!firstMove) nio.readStroke();
     }
 
 
@@ -209,7 +204,6 @@ public class GameWindow {
         buttonArrayList.add(button7);
         buttonArrayList.add(button8);
         buttonArrayList.add(button9);
-
         field[0][0] = button1;
         field[1][0] = button2;
         field[2][0] = button3;
@@ -219,8 +213,6 @@ public class GameWindow {
         field[0][2] = button7;
         field[1][2] = button8;
         field[2][2] = button9;
-
-
     }
 
     public void lockBatlefield(int myStroke) {
@@ -236,7 +228,6 @@ public class GameWindow {
     void doOpponentStroke(int x, int y){
         battlefield.doStroke(x,y,opponent,frame);
     }
-
 }
 
 

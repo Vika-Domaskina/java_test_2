@@ -51,6 +51,7 @@ public class Server implements NetworkIO {
         }
     }
 
+
     public void makeGameForServer() {
         bg = new GameWindow(this,false,"Server");
         JOptionPane.showMessageDialog(new Frame(), "Your opponent stroke first!");

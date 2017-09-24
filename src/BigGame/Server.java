@@ -1,6 +1,7 @@
 package BigGame;
 
 import BigGame.GameWindow.FieldCellActionListener;
+import sun.nio.ch.Net;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +15,15 @@ import java.net.Socket;
 /**
  * Created by Viktoriya.D on 8/22/2017.
  */
-public class Server {
+public class Server implements Network {
     private static Socket fromclient;
     private static ServerSocket socket;
     static GameWindow bg = null;
     static String[] masivStrokes;
+    OutputStreamWriter out = null;
+    BufferedReader in = null;
 
-    public static void createServerConnection() {
+    public void createServerConnection() {
         try {
             socket = new ServerSocket(4444);
         } catch (IOException e) {
@@ -38,6 +41,8 @@ public class Server {
         try {
             System.out.println("Waiting for a client...");
             fromclient = socket.accept();
+            out = new OutputStreamWriter(fromclient.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
             System.out.println("Client connected");
         } catch (IOException e) {
             fromclient = null;
@@ -46,16 +51,17 @@ public class Server {
         }
     }
 
-    public static void makeGameForServer() {
-        bg = new GameWindow();
+    public void makeGameForServer() {
+        bg = new GameWindow(this, false, "Server");
         JOptionPane.showMessageDialog(new Frame(), "Your opponent stroke first!");
         bg.frame.enable(false);
+        this.readStroke();
     }
 
-    public static void writeInformationAboutStroke(String information) {
+    public void writeInformationAboutStroke(String information) {
         try {
             System.out.println("Start write server");
-            OutputStreamWriter out = new OutputStreamWriter(fromclient.getOutputStream());
+
             out.write(information);
             out.flush();
             System.out.println("Stop write server");
@@ -66,51 +72,58 @@ public class Server {
 
     }
 
-    public static void readeInformationAboutStroke() {
+    public void readeInformationAboutStroke() {
         try {
             System.out.println("Start read server");
             System.out.println(fromclient);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fromclient.getInputStream()));
+            bg.lockBatlefield(bg.opponent);
             String msg = in.readLine();
             System.out.println(msg);
             masivStrokes = msg.split(";");
-            bg.lockBatlefield(bg.opponent);
-            makeClick(masivStrokes[0], masivStrokes[1]);
-            bg.unlockBatlefield();
-            System.out.println("Stop read server");
+            if (masivStrokes[0].equals("Reset")){
+                System.out.println("ResetBranch");
+                bg.unlockBatlefield();
+                System.out.println("Unlok");
+                bg.reset();
+                bg.battlefield.resetField();
+                System.out.println("Stop read server");
+            } else {
+                bg.unlockBatlefield();
+                makeClick(masivStrokes[0], masivStrokes[1]);
+                System.out.println("Stop read server");
+            }
         } catch (IOException e) {
             System.err.println("Couldn't get I/O for the connection to client ");  //+ ia.getHostAddress()
             System.exit(1);
         }
     }
 
-    private static void makeClick(String x, String y) {
-        if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 0) {
-            bg.button1.addActionListener(new BigGame.GameWindow.FieldCellActionListener(0, 0));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 0) {
-            bg.button2.addActionListener(new FieldCellActionListener(1, 0));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 0) {
-            bg.button3.addActionListener(new FieldCellActionListener(2, 0));
-        } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 1) {
-            bg.button4.addActionListener(new FieldCellActionListener(0, 1));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 1) {
-            bg.button5.addActionListener(new FieldCellActionListener(1, 1));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 1) {
-            bg.button6.addActionListener(new FieldCellActionListener(2, 1));
-        } else if (Integer.parseInt(x) == 0 && Integer.parseInt(y) == 2) {
-            bg.button7.addActionListener(new FieldCellActionListener(0, 2));
-        } else if (Integer.parseInt(x) == 1 && Integer.parseInt(y) == 2) {
-            bg.button8.addActionListener(new FieldCellActionListener(1, 2));
-        } else if (Integer.parseInt(x) == 2 && Integer.parseInt(y) == 2) {
-            bg.button9.addActionListener(new FieldCellActionListener(2, 2));
-        }
-
-
+    private void makeClick(String x, String y) {
+        int xn = Integer.parseInt(x);
+        int yn = Integer.parseInt(y);
+        bg.field[xn][yn].setIcon(bg.imageOpponent);
+        bg.doOpponentStroke(xn, yn);
+        bg.field[xn][yn].setEnabled(false);
     }
 
+    @Override
+    public String readStroke() {
+        this.readeInformationAboutStroke();
+        return "finish read client inform!";
+    }
+
+    @Override
+    public void writeStroke(String stroke) {
+        this.writeInformationAboutStroke(stroke);
+    }
+
+    @Override
+    public void resetAllFilds() {
+        bg.resetGame();
+    }
 
     /*public static void main(String[] args) throws IOException {
-        System.out.println("Welcome to Server side");
+        System.outW.println("Welcome to Server side");
         createServerConnection();
         while (true) {
             chat();

@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class GameWindow {
 
-    static class FieldCellActionListener implements ActionListener {
+
+    class FieldCellActionListener implements ActionListener {
         int xPosit;
         int yPosit;
 
@@ -27,7 +28,6 @@ public class GameWindow {
         public void actionPerformed(ActionEvent e) {
             JButton button = ((JButton) e.getSource());
             System.out.println("Coordinate position: x:" + xPosit + "y:" + yPosit);
-            int typePlayer = getTypePlayer();
             button.setIcon(imageTypePlayer);
             if (battlefield.doStroke(xPosit, yPosit, typePlayer, frame)) {
                 for (int i = 0; i < 9; i++) {
@@ -36,30 +36,13 @@ public class GameWindow {
             }
             button.setEnabled(false);
             button.setText("");
-            if (typePlayer == 1) {
-                Client.writeInformationAboutStroke(sendInformationAboutStroke());
-                Server.readeInformationAboutStroke();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-                Server.writeInformationAboutStroke(sendInformationAboutStroke());
-                Client.readeInformationAboutStroke();
-            } else {
-                Server.writeInformationAboutStroke(sendInformationAboutStroke());
-                Client.readeInformationAboutStroke();
-            }
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-            Server.readeInformationAboutStroke();
-            Client.writeInformationAboutStroke(sendInformationAboutStroke());
+            nio.writeStroke(sendInformationAboutStroke());
+            paintChanges();
+
         }
 
         public String sendInformationAboutStroke() {
+            System.out.println("sending inform");
             return xPosit + ";" + yPosit + "\n";
         }
 
@@ -80,21 +63,25 @@ public class GameWindow {
     JTextField msg_field;
     JButton sendButton;
     static ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
-    static int counterPlayer = 0;
+    public JButton[][] field = new JButton[3][3];
     static int typePlayer;
     static int opponent;
     static JFrame frame;
     static ImageIcon imageTypePlayer;
     ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
+    public ImageIcon imageOpponent;
     static Battlefield battlefield = new Battlefield();
+    Network nio = null;
 
-    public GameWindow() {
-        frame = new JFrame("My Game");
+    public GameWindow(Network nio, boolean first, String windowName) {
+        this.nio = nio;
+        frame = new JFrame(windowName);
         frame.setPreferredSize(new Dimension(1600, 1300));
         msg_area.setWrapStyleWord(true);
         msg_area.setLineWrap(true);
         this.initArrayButtons();
         this.resetGame();
+        this.getTypePlayer(first);
         //mainPanel.add(dialogPanel);
         frame.setContentPane(this.mainPanel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -119,10 +106,12 @@ public class GameWindow {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                imageTypePlayer = defaultIcon;
-                counterPlayer = 0;
+                /*imageTypePlayer = defaultIcon;*/
                 resetGame();
                 battlefield.resetField();
+                nio.writeStroke("Reset;\n");
+                paintChanges();
+
             }
         });
 
@@ -176,19 +165,21 @@ public class GameWindow {
             buttonArrayList.get(i).setEnabled(true);
             buttonArrayList.get(i).setIcon(defaultIcon);
         }
+        paintChanges();
     }
 
-    public static int getTypePlayer() {
-        if (counterPlayer % 2 == 0) {
+    public int getTypePlayer(boolean first) {
+        if (first) {
             typePlayer = 1;
             opponent = 2;
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
+            imageOpponent = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
         } else {
             typePlayer = 2;
             opponent = 1;
             imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
+            imageOpponent = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
         }
-        counterPlayer++;
         return typePlayer;
     }
 
@@ -202,6 +193,16 @@ public class GameWindow {
         buttonArrayList.add(button7);
         buttonArrayList.add(button8);
         buttonArrayList.add(button9);
+
+        field[0][0] = button1;
+        field[1][0] = button2;
+        field[2][0] = button3;
+        field[0][1] = button4;
+        field[1][1] = button5;
+        field[2][1] = button6;
+        field[0][2] = button7;
+        field[1][2] = button8;
+        field[2][2] = button9;
     }
 
     public void lockBatlefield(int myStroke) {
@@ -213,6 +214,29 @@ public class GameWindow {
     public void unlockBatlefield() {
         /*JOptionPane.showMessageDialog(frame, "Your stroke!!!");*/
         frame.enable(true);
+    }
+
+    void doOpponentStroke(int x, int y) {
+        battlefield.doStroke(x, y, opponent, frame);
+    }
+
+    void reset() {
+        battlefield.resetField();
+        for (int i = 0; i < 9; i++) {
+            buttonArrayList.get(i).setEnabled(true);
+            buttonArrayList.get(i).setIcon(defaultIcon);
+        }
+    }
+
+    public void paintChanges() {
+        SwingWorker worker = new SwingWorker<String, Void>() {
+            @Override
+            public String doInBackground() {
+                nio.readStroke();
+                return "Opponents turn done";
+            }
+        };
+        worker.execute();
     }
 
 

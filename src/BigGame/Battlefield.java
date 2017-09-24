@@ -12,17 +12,17 @@ public class Battlefield {
 
     public void resetField() {
         for (int i = 0; i < 3; i++) {
-            /*System.out.println("\n"+i);*/
+            /*System.outW.println("\n"+i);*/
             for (int k = 0; k < 3; k++) {
                 arr[i][k] = 0;
-                /*System.out.print(arr[i][k]);*/
+                /*System.outW.print(arr[i][k]);*/
             }
         }
     }
 
     static void paintField(Integer[][] arr) {
         for (int i = 0; i < 3; i++) {
-            /*System.out.println("\n" );*/
+            /*System.outW.println("\n" );*/
             for (int k = 0; k < 3; k++) {
                 System.out.println(arr[i][k]);
             }

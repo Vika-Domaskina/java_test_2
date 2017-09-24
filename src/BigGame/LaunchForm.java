@@ -20,7 +20,6 @@ public class LaunchForm {
     private JFrame frame2;
 
 
-
     boolean isServer;
 
     public LaunchForm() {
@@ -69,16 +68,18 @@ public class LaunchForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!isServer && !IPField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(frame2, Client.createClientConnection(IPField.getText()));
-                    if (!Client.connect) {
+                    Client client = new Client();
+                    JOptionPane.showMessageDialog(frame2, client.createClientConnection(IPField.getText()));
+                    if (!client.connect) {
                         serverButton.setEnabled(true);
                         clientButton.setEnabled(true);
                     } else {
-                        Client.makeGameForClient();
+                        client.makeGameForClient();
                     }
                 } else if (isServer) {
-                    Server.createServerConnection();
-                    Server.makeGameForServer();
+                    Server server = new Server();
+                    server.createServerConnection();
+                    server.makeGameForServer();
                 } else {
                     JOptionPane.showMessageDialog(frame2, "Could you please input IP server in text box!!!");
                 }
@@ -94,7 +95,7 @@ public class LaunchForm {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (IPField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(frame2, "Please input in text box server address for connecting");
+                   // JOptionPane.showMessageDialog(frame2, "Please input in text box server address for connecting");
                 }
                 serverButton.setEnabled(true);
             }

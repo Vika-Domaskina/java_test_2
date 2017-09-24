@@ -69,16 +69,18 @@ public class LaunchForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!isServer && !IPField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(frame2, Client.createClientConnection(IPField.getText()));
-                    if (!Client.connect) {
+                    Client cli = new Client();
+                    JOptionPane.showMessageDialog(frame2, cli.createClientConnection(IPField.getText()));
+                    if (!cli.connect) {
                         serverButton.setEnabled(true);
                         clientButton.setEnabled(true);
                     } else {
-                        Client.makeGameForClient();
+                        cli.makeGameForClient();
                     }
                 } else if (isServer) {
-                    Server.createServerConnection();
-                    Server.makeGameForServer();
+                    Server s = new Server();
+                    s.createServerConnection();
+                    s.makeGameForServer();
                 } else {
                     JOptionPane.showMessageDialog(frame2, "Could you please input IP server in text box!!!");
                 }

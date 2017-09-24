@@ -96,8 +96,4 @@ public class Battlefield {
             return;*/
     }
 
-    public static void main(String[] args) {
-
-    }
-
 }

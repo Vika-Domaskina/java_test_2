@@ -1,8 +1,0 @@
-Phone field:
-1. register
-2. ABN
-3. Free trial
-4. Contact us
-5. Resellers
-6. Search Ads
-7. Domains/ bulk update (members area)

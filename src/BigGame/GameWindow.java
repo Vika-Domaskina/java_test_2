@@ -68,7 +68,7 @@ public class GameWindow {
     static int opponent;
     static JFrame frame;
     static ImageIcon imageTypePlayer;
-    ImageIcon defaultIcon = new ImageIcon("D:\\java_test_2\\src\\images\\krNol.png", "Krestiki/Noliki");
+    ImageIcon defaultIcon = new ImageIcon("src\\images\\krNol.png", "Krestiki/Noliki");
     public ImageIcon imageOpponent;
     static Battlefield battlefield = new Battlefield();
     Network nio = null;
@@ -172,13 +172,13 @@ public class GameWindow {
         if (first) {
             typePlayer = 1;
             opponent = 2;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
-            imageOpponent = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
+            imageTypePlayer = new ImageIcon("src\\images\\krestik.png", "Krestik");
+            imageOpponent = new ImageIcon("src\\images\\olik.png", "Nolik");
         } else {
             typePlayer = 2;
             opponent = 1;
-            imageTypePlayer = new ImageIcon("D:\\java_test_2\\src\\images\\olik.png", "Nolik");
-            imageOpponent = new ImageIcon("D:\\java_test_2\\src\\images\\krestik.png", "Krestik");
+            imageTypePlayer = new ImageIcon("src\\images\\olik.png", "Nolik");
+            imageOpponent = new ImageIcon("src\\images\\krestik.png", "Krestik");
         }
         return typePlayer;
     }

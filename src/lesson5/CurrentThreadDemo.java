@@ -11,8 +11,8 @@ public class CurrentThreadDemo {
         System.out.println(thread);
         try{
             for (int i=5;i>0;i--){
+                System.out.println(i);
                 if(i==3) {
-                    System.out.println(i);
                     thread.interrupt();
                     Thread.sleep(2000);
                 }
